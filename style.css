@@ -35,3 +35,69 @@ a {
     text-decoration: none;
     color: rgb(128, 128, 128);
 }
+.header {
+    height: 400px;
+    margin-top: 8%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 5% 0px 5%;
+}
+.headerText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    font-size: 45px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    opacity: 1;
+    animation: fadeIn 2s ease;
+}
+/* Header text animation */
+@keyframes fadeIn {
+    from {
+        margin-top: -20%;
+        opacity: 0;
+    }
+    to {
+        margin-top: 0%;
+        opacity: 1;
+    }
+}
+.headerImage {
+    animation: moveIn 1.5s ease;
+}
+@keyframes moveIn {
+    from {
+        margin-top: -20%;
+        margin-right: -50%;
+    }
+    to {
+        margin-top: 0%;
+        margin-right: 0%;
+    }
+}
+.carType {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    gap: 10%;
+    animation: carMove 2s ease;
+    color: rgb(131, 131, 131);
+    cursor: pointer;
+}
+.carType div:hover {
+    color: black;
+}
+@keyframes carMove {
+    from {
+        gap: 50%;
+    }
+    to {
+        gap: 10%;
+    }
+}
+#all {
+    color: black;
+}
