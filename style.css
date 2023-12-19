@@ -1,0 +1,37 @@
+body {
+    font-family: sans-serif;
+    margin: 0px;
+    overflow-x: hidden;
+}
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 0px 5% 0px 5%;
+}
+.navBar img {
+    animation: easeIn 2s ease;
+}
+@keyframes easeIn {
+    from {
+        margin-left: -30%;
+    }
+    to {
+        margin-left: 0%;
+    }
+}
+.navContent {
+    display: flex;
+    gap: 35px;
+}
+.navContent a:hover {
+    color: rgb(0, 0, 0);
+}
+#home {
+    color: black;
+}
+a {
+    text-decoration: none;
+    color: rgb(128, 128, 128);
+}
