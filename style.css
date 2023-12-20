@@ -81,6 +81,8 @@ a {
     margin-top: 5%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     font-size: 40px;
     gap: 10%;
     animation: carMove 2s ease;
@@ -102,3 +104,42 @@ a {
     color: black;
 }
 /* Servis Content */
+.content {
+    margin-top: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+.card {
+    padding: 20px;
+}
+.card img {
+    width: 500px;
+    height: 250px;
+    border-radius: 10px;
+}
+.text {
+    border-radius: 20px;
+    margin: -5px;
+    background-color: rgb(194, 194, 194);
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px;
+}
+.content button {
+    font-size: 19px;
+    font-weight: 700;
+    width: 20%;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.content button:hover {
+    background-color: antiquewhite;
+}
