@@ -27,28 +27,22 @@
       <div class="headerImage"><img src="images/HeaderImg.png" alt="" /></div>
     </div>
     <div class="carType">
-      <div id="manual">Manual</div>
-      <div id="all">All</div>
-      <div id="auto">Automatik</div>
+      <div id="manual" onclick="manualSort()">Manual</div>
+      <div id="all" onclick="allSort()">All</div>
+      <div id="auto" onclick="autoSort()">Automatik</div>
     </div>
     <br />
     <br />
-    <div class="sort">Sort</div>
-    <div class="content">
-      <div class="card">
-        <img src="images/servis/Audi Q8.png" alt="" />
-        <div class="text">
-          <p>Audi Q8</p>
-          <p>2024</p>
-          <p>200€/month</p>
-          <p>4 Avalible</p>
-          <button>Order</button>
-        </div>
-      </div>
-      <div class="card">
-        <img src="images/servis/Bugatti.png" alt="" />
-        <p>Bugatti</p>
-      </div>
-    </div>
+    <form action="" id="form">
+      <select name="Sort" id="sort">
+        <option value="none" selected>Sort Cars</option>
+        <option value="Low">Low To High</option>
+        <option value="High">High To Low</option>
+        <option value="Latest">Latest</option>
+        <option value="Oldest">Oldest</option>
+      </select>
+      <button onclick="sortButton()">Sort</button>
+    </form>
+    <div class="content"></div>
   </body>
 </html>

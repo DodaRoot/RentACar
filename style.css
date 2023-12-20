@@ -105,15 +105,30 @@ a {
 }
 /* Servis Content */
 .content {
-    margin-top: 10%;
+    margin-top: 0.5%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 5%;
+    gap: 10%;
 }
 .card {
-    padding: 20px;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: cardDrop 2s ease;
+}
+@keyframes cardDrop {
+    from {
+        margin-top: -5%;
+        opacity: 0;
+    }
+    to {
+        margin-top: 0%;
+        opacity: 1;
+    }
 }
 .card img {
     width: 500px;
@@ -122,12 +137,11 @@ a {
 }
 .text {
     border-radius: 20px;
-    margin: -5px;
+    width: 115%;
     background-color: rgb(194, 194, 194);
     display: flex;
     justify-content: space-between;
-    gap: 5%;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
     padding: 10px;
 }
@@ -142,4 +156,11 @@ a {
 }
 .content button:hover {
     background-color: antiquewhite;
+}
+#form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2%;
+    gap: 2%;
 }
