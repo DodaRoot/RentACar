@@ -1,0 +1,136 @@
+body {
+    font-family: sans-serif;
+    margin: 0px;
+    overflow-x: hidden;
+}
+body {
+    font-family: sans-serif;
+    margin: 0px;
+    overflow-x: hidden;
+}
+/* Nav Bar Styling */
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 0px 5% 0px 5%;
+}
+.navBar img {
+    animation: easeIn 1.5s ease;
+}
+@keyframes easeIn {
+    from {
+        margin-left: -20%;
+    }
+    to {
+        margin-left: 0%;
+    }
+}
+/* Nav Bar Content */
+.navContent {
+    display: flex;
+    gap: 35px;
+}
+.navContent a:hover {
+    color: rgb(0, 0, 0);
+}
+#about {
+    color: black;
+}
+a {
+    text-decoration: none;
+    color: rgb(128, 128, 128);
+}
+.header {
+    height: 400px;
+    margin-top: 8%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 5% 0px 5%;
+}
+.headerText {
+    margin-top: 10%;
+    height: 100px;
+    text-align: center;
+    width: 45%;
+    font-size: 45px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    opacity: 1;
+    animation: fadeIn 2s ease;
+}
+/* Header text animation */
+@keyframes fadeIn {
+    from {
+        margin-top: -10%;
+        opacity: 0;
+    }
+    to {
+        margin-top: 10%;
+        opacity: 1;
+    }
+}
+.content {
+    margin-top: 5%;
+    padding: 100px;
+    font-size: 32px;
+    background-color: antiquewhite;
+}
+.content h1 {
+    animation: fade 3s ease;
+}
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.address {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5%;
+}
+.address img {
+    margin: 30px;
+    width: 80%;
+    height: 100%;
+}
+.card{
+    background-color: azure;
+    display: flex;
+    gap: 10%;
+    border-radius: 40px;
+    width: 350px;
+    padding: 30px;
+    margin: 30px;
+    width: 60%;
+    height: 100%;
+    border: 1px solid black;
+}
+.workers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+.workers .card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: fit-content;
+    background-color: antiquewhite;
+}
+.workers .card p {
+    font-size: 27px;
+    margin: 0;
+}
+.card img {
+    width: 400px;
+    height: 400px;
+    border-radius: 100%;
+}

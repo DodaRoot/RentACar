@@ -10,9 +10,10 @@ let cars = {
     7 : ['images/servis/Mercedes-AMG GT 2024.png' , 'Automatic' , 'Mercedes-AMG' , '2023' , '500€/month' , '2 Avalible'],
 }
 // Appending the card container
+let servis = document.querySelector('.servis')
 let content = document.createElement('div')
 content.setAttribute('class', 'content')
-document.body.append(content)
+servis.append(content)
 // Main appending function
 function appendCars(car) {
     // Creating the elements
@@ -53,7 +54,7 @@ function allSort() {
     content.remove()
     content = document.createElement('div')
     content.setAttribute('class', 'content')
-    document.body.append(content)
+    servis.append(content)
     for (let car in cars) {
         appendCars(car)
     }
@@ -66,7 +67,7 @@ function manualSort() {
     content.remove()
     content = document.createElement('div')
     content.setAttribute('class', 'content')
-    document.body.append(content)
+    servis.append(content)
     for (let car in cars) {
         if (cars[car][1] == 'Manual') {
             appendCars(car)
@@ -81,16 +82,10 @@ function autoSort() {
     content.remove()
     content = document.createElement('div')
     content.setAttribute('class', 'content')
-    document.body.append(content)
+    servis.append(content)
     for (let car in cars) {
         if (cars[car][1] == 'Automatic') {
             appendCars(car)
         }
     }
-}
-
-function sortButton () {
-    event.preventDefault()
-    let sortVal = document.querySelector('#sort')
-    console.log(sortVal.value)
 }

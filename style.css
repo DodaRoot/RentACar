@@ -3,6 +3,7 @@ body {
     margin: 0px;
     overflow-x: hidden;
 }
+/* Nav Bar Styling */
 .navBar {
     display: flex;
     justify-content: space-between;
@@ -21,6 +22,7 @@ body {
         margin-left: 0%;
     }
 }
+/* Nav Bar Content */
 .navContent {
     display: flex;
     gap: 35px;
@@ -67,6 +69,7 @@ a {
 .headerImage {
     animation: moveIn 1.5s ease;
 }
+/* Header Car Animation */
 @keyframes moveIn {
     from {
         margin-top: -20%;
@@ -92,6 +95,7 @@ a {
 .carType div:hover {
     color: black;
 }
+/* Car type animation */
 @keyframes carMove {
     from {
         gap: 50%;
@@ -157,10 +161,30 @@ a {
 .content button:hover {
     background-color: antiquewhite;
 }
-#form {
+/* Reviews content */
+.reviews {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+    padding: 50px;
+    font-size: 15px;
+}
+.reviews .card {
+    width: 400px;
+}
+.reviews img {
+    width: 500px;
+}
+/* Footer */
+.footer {
+    background-color: grey;
+    margin-bottom: -5%;
+    width: 100%;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 2%;
-    gap: 2%;
+    color: aliceblue;
+    font-size: 30px;
 }
