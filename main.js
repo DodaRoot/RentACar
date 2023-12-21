@@ -9,11 +9,18 @@ let cars = {
     6 : ['images/servis/Mercedes EQS SUV.png' , 'Manual' , 'Mercedes EQS' , '2023' , '200€/month' , '5 Avalible'],
     7 : ['images/servis/Mercedes-AMG GT 2024.png' , 'Automatic' , 'Mercedes-AMG' , '2023' , '500€/month' , '2 Avalible'],
 }
-// Appending the card container
+
 let servis = document.querySelector('.servis')
 let content = document.createElement('div')
-content.setAttribute('class', 'content')
-servis.append(content)
+
+if ( document.URL.includes("index.html") ) {
+    content.setAttribute('class', 'content')
+    servis.append(content)
+    for (let car in cars) {
+        appendCars(car)
+    }
+}
+
 // Main appending function
 function appendCars(car) {
     // Creating the elements
@@ -34,14 +41,13 @@ function appendCars(car) {
     }
     // Button append
     let btn = document.createElement('button')
+    btn.addEventListener('click' , order);
     btn.innerText = 'Order'
     text.append(btn)
     image.src = cars[car][0]
 }
 
-for (let car in cars) {
-    appendCars(car)
-}
+
 
 let manualText = document.querySelector('#manual')
 let autoText = document.querySelector('#auto')
@@ -88,4 +94,74 @@ function autoSort() {
             appendCars(car)
         }
     }
+}
+
+if ( document.URL.includes("about.html") ) {
+    // Animated text in about page
+    let anchor = document.querySelector('.contentAbout p')
+    let text = 'Planning your journey is just a click away. Our user-friendly online car reservation system ensures a hassle-free booking process, putting you in control of your travel plans.'
+    let i = 0
+    textAnimation(anchor, text)
+    function textAnimation (anchor, text) {
+        if (i < text.length) {
+            setTimeout (() => {
+                anchor.append(text[i])
+                i++
+                textAnimation(anchor, text)
+            }, 10)  
+        } 
+    }
+}
+
+function order() {
+    if (user == null) {
+        alert('You must login to continue')
+    }
+    else {
+        alert('Lets go')
+    }
+}
+
+
+// acaunt settings
+let user = localStorage.getItem('user')
+let userDisplay = document.querySelector('#login')
+let loginPage = document.querySelector('.display')
+let logoutPage = document.querySelector('.logout')
+
+if (user != null) {
+    userDisplay.innerText = user
+    loginPage.style.display = 'none';
+    logoutPage.style.display = 'contents';
+}
+else {
+    logoutPage.style.display = 'none'
+}
+
+// Login function
+function login() {
+    let userName = document.querySelector('#username').value
+    let email = document.querySelector('#email').value
+    let password = document.querySelector('#password').value
+    event.preventDefault()
+    for (let e in loginData) {
+        if (userName == loginData[e][0] && email == loginData[e][1] && password == loginData[e][2]) {
+            console.log('login is successful')
+            login.innerText = userName
+            user = localStorage.setItem('user' , userName)
+            location.reload()
+        }
+    }
+}
+
+function delUser () {
+    localStorage.removeItem('user');
+    location.reload()
+}
+
+console.log(user)
+// Login data
+let loginData = {
+    0 : ['admin' , 'admin' , 'admin'],
+    1 : ['doda' , 'doda@gmail.com' , 'password'],
 }

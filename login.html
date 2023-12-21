@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <link rel="stylesheet" href="login.css" />
+    <script src="main.js" async></script>
   </head>
   <body>
     <div class="navBar">
@@ -14,7 +15,7 @@
         <p><a id="about" href="about.html">About</a></p>
         <p><a id="servis" href="#servisLnk">Servis</a></p>
         <p><a id="reviews" href="#reviewsLnk">Reviews</a></p>
-        <p><a id="login" href="">Login</a></p>
+        <p><a id="login" href="login.html">Login</a></p>
       </div>
     </div>
     <div class="display">
@@ -22,17 +23,20 @@
         <h2>Login to rent a car</h2>
         <form action="" id="form">
           <label for="username">Username</label>
-          <input type="text" id="username" />
+          <input type="text" id="username" minlength="4" />
           <br />
           <label for="email">Email</label>
-          <input type="text" id="email" />
+          <input type="text" id="email" minlength="4" />
           <br />
           <label for="password">Password</label>
-          <input type="password" id="password" />
+          <input type="password" id="password" minlength="4" />
           <br />
-          <button>Login</button>
+          <button type="submit" onclick="login()">Login</button>
         </form>
       </div>
+    </div>
+    <div class="logout">
+      <button onclick="delUser()">Logout</button>
     </div>
   </body>
 </html>

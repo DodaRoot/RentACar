@@ -72,14 +72,14 @@ a {
         opacity: 1;
     }
 }
-.content {
+.contentAbout {
     margin-top: 5%;
     padding: 100px;
     font-size: 32px;
     background-color: rgb(255, 187, 98);
     color: rgb(255, 255, 255);
 }
-.content h1 {
+.contentAbout h1 {
     animation: fade 3s ease;
 }
 @keyframes fade {
@@ -119,15 +119,16 @@ h1 {
 .workers {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     text-align: center;
-    margin: 4% 10%;
+    gap: 5%;
+    margin: 2% 10%;
 }
 .workers .cards {
     display: flex;
     flex-direction: column;
     width: fit-content;
-    
+    margin-top: 2%;
 }
 .workers .cards p {
     text-align: center;
