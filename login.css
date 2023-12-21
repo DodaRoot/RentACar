@@ -1,0 +1,66 @@
+body {
+    font-family: sans-serif;
+    margin: 0px;
+    overflow-x: hidden;
+}
+/* Nav Bar Styling */
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 0px 5% 0px 5%;
+}
+.navBar img {
+    animation: easeIn 3s ease;
+}
+@keyframes easeIn {
+    from {
+        margin-left: -100%;
+    }
+    to {
+        margin-left: 0%;
+    }
+}
+/* Nav Bar Content */
+.navContent {
+    display: flex;
+    gap: 35px;
+}
+.navContent a:hover {
+    color: rgb(0, 0, 0);
+}
+#login {
+    color: black;
+}
+a {
+    text-decoration: none;
+    color: rgb(128, 128, 128);
+}
+/* Login form */
+.display {
+    margin-top: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    width: fit-content;
+    padding: 50px;
+    font-size: 25px;
+}
+#form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#form button {
+    font-size: 26px;
+    width: 100%;
+}
