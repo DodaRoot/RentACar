@@ -48,7 +48,7 @@ function appendCars(car) {
 }
 
 
-
+// Sorting cars servis
 let manualText = document.querySelector('#manual')
 let autoText = document.querySelector('#auto')
 let allText = document.querySelector('#all')
@@ -113,6 +113,7 @@ if ( document.URL.includes("about.html") ) {
     }
 }
 
+// Order page function
 function order() {
     if (user == null) {
         alert('You must login to continue')
@@ -153,7 +154,7 @@ function login() {
         }
     }
 }
-
+// Logout function
 function delUser () {
     localStorage.removeItem('user');
     location.reload()
