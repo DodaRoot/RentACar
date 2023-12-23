@@ -190,3 +190,69 @@ a {
     color: aliceblue;
     font-size: 30px;
 }
+
+/* Order Page */
+.mainContent {
+    margin-top: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+.orderImage img {
+    width: 750px;
+    height: 375px;
+}
+.orderInfo {
+    border: 1px solid black;
+    border-radius: 22px;
+    padding: 2% 3%;
+    font-size: 27px;
+}
+/* Order Input */
+.orderState {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #838383;
+    color: white;
+    height: 270px;
+}
+.orderState #orderForm {
+    margin: 5% 0px 5% 0px;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.orderState #orderForm button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    height: 80px;
+    width: 30%;
+    font-size: 40px;
+}
+.orderState input {
+    display: flex;
+    height: 30px;
+    width: 80%;
+}
+.orderState select {
+    font-size: 22px;
+    display: flex;
+    height: 40px;
+    width: 80%;
+}
+.orderState option {
+    width: 80%;
+}
+.locationOrder , .dateOrder {
+    width: 30%;
+}
+.locationOrder div , .dateOrder div{
+    margin: 5%;
+}

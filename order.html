@@ -5,17 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Order</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="main.js" async></script>
   </head>
   <body>
     <div class="navBar">
       <img src="images/Logo.jpg" width="200px" alt="logo" />
       <div class="navContent">
-        <p><a id="home" href="index.html">Home</a></p>
+        <p>
+          <a id="home" href="index.html">Home</a>
+        </p>
         <p><a id="about" href="about.html">About</a></p>
         <p><a id="servis" href="index.html#servisLnk">Servis</a></p>
         <p><a id="reviews" href="index.html#reviewsLnk">Reviews</a></p>
         <p><a id="login" href="login.html">Login</a></p>
       </div>
+    </div>
+    <div class="mainContent">
+      <div class="orderImage">
+        <img src="images/servis/Audi Q8.png" alt="" />
+      </div>
+      <div class="orderInfo">
+        <p>Car 🚗: Audi Q8</p>
+        <hr />
+        <p>Gear ⚙️: Manual</p>
+        <hr />
+        <p>Year 📅: 2024</p>
+        <hr />
+        <p>Price 💵: 300€/month</p>
+      </div>
+    </div>
+    <div class="orderState">
+      <form id="orderForm" action="">
+        <div class="locationOrder">
+          <div>
+            <label for="PickCity">Pick Up City</label>
+            <select name="PickCity" id="PickCity">
+              <option value="Prishtine">Prishtine</option>
+              <option value="Gjakove">Gjakove</option>
+              <option value="Prizren">Prizren</option>
+            </select>
+          </div>
+          <div>
+            <label for="DropCity">Return City</label>
+            <select name="DropCity" id="DropCity">
+              <option value="Prishtine">Prishtine</option>
+              <option value="Gjakove">Gjakove</option>
+              <option value="Prizren">Prizren</option>
+            </select>
+          </div>
+        </div>
+        <div class="dateOrder">
+          <div>
+            <label for="PickDate">Pick Up Date</label>
+            <input type="date" name="PickDate" id="PickDate" />
+          </div>
+          <div>
+            <label for="DropDate">Return Date</label>
+            <input type="date" name="DropDate" id="DropDate" />
+          </div>
+        </div>
+        <button type="order">Order</button>
+      </form>
     </div>
   </body>
 </html>

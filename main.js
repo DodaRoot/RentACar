@@ -21,6 +21,7 @@ if ( document.URL.includes("index.html") ) {
     }
 }
 
+let carInfo = localStorage.getItem('carInfo')
 // Main appending function
 function appendCars(car) {
     // Creating the elements
@@ -41,7 +42,16 @@ function appendCars(car) {
     }
     // Button append
     let btn = document.createElement('button')
-    btn.addEventListener('click' , order);
+    btn.addEventListener('click' , () => {
+        if (user == null) {
+            alert('You must login to continue')
+            console.log(car)
+        }
+        else {
+            location.replace('order.html')
+            carInfo = localStorage.setItem('carInfo' , car)
+        }
+    });
     btn.innerText = 'Order'
     text.append(btn)
     image.src = cars[car][0]
@@ -113,29 +123,17 @@ if ( document.URL.includes("about.html") ) {
     }
 }
 
-// Order page function
-function order() {
-    if (user == null) {
-        alert('You must login to continue')
-    }
-    else {
-        alert('Lets go')
-    }
-}
-
-
 // acaunt settings
 let user = localStorage.getItem('user')
 let userDisplay = document.querySelector('#login')
 let loginPage = document.querySelector('.display')
 let logoutPage = document.querySelector('.logout')
-
-if (user != null) {
-    userDisplay.innerText = user
+user != null ? userDisplay.innerText = user : false ;
+if (user != null && loginPage != null && loginPage != null) {
     loginPage.style.display = 'none';
     logoutPage.style.display = 'contents';
 }
-else {
+else if (logoutPage != null) {
     logoutPage.style.display = 'none'
 }
 
@@ -160,9 +158,20 @@ function delUser () {
     location.reload()
 }
 
-console.log(user)
 // Login data
 let loginData = {
     0 : ['admin' , 'admin' , 'admin'],
     1 : ['doda' , 'doda@gmail.com' , 'password'],
+}
+
+// order func
+if ( document.URL.includes("order.html") ) {
+    let orderInfo = document.querySelectorAll('.orderInfo p')
+    let orderImage = document.querySelector('.orderImage img')
+    orderImage.src = cars[carInfo][0]
+    orderInfo[0].innerText = `Car 🚗: ${cars[carInfo][2]}`
+    orderInfo[1].innerText = `Gear ⚙️: ${cars[carInfo][1]}`
+    orderInfo[2].innerText = `Year 📅: ${cars[carInfo][3]}`
+    orderInfo[3].innerText = `Price 💵: ${cars[carInfo][4]}`
+    console.log(carInfo)
 }
