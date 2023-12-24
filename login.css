@@ -70,5 +70,33 @@ a {
 }
 #form button {
     font-size: 26px;
-    width: 100%;
+    width: 120px;
+}
+.logout {
+    margin-top: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logoutInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    border: 2px solid black;
+    border-radius: 50px;
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    width: fit-content;
+    padding: 50px;
+    font-size: 25px;
+    color: white;
+}
+.logoutInfo h3 {
+    border-bottom: 1px solid rgb(255, 255, 255);
+}
+button {
+    align-self: center;
+    font-size: 26px;
+    width: 120px;
 }
