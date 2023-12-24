@@ -181,7 +181,6 @@ if ( document.URL.includes("order.html") ) {
     orderInfo[1].innerText = `Gear ⚙️: ${cars[carInfo][1]}`
     orderInfo[2].innerText = `Year 📅: ${cars[carInfo][3]}`
     orderInfo[3].innerText = `Price 💵: ${cars[carInfo][4]}`
-    console.log(carInfo)
 }
 if ( document.URL.includes("login.html") ) {
     let loginInfo = document.querySelectorAll('.logoutInfo h3')
@@ -190,27 +189,25 @@ if ( document.URL.includes("login.html") ) {
     loginInfo[2].innerText = `Password - ${pass}`
 }
 
-// ---- Sending Order Email ------
-(function(){
-    emailjs.init("4dVHRm98BCjYvvgrq");
-})();
-function sendOrder() {
-    event.preventDefault()
-    let pickCity = document.querySelector('#PickCity').value
-    let dropCity = document.querySelector('#DropCity').value
-    let pickDate = document.querySelector('#PickDate').value
-    let dropDate = document.querySelector('#DropDate').value
-    console.log(pickCity)
-    console.log(pickDate)
-    console.log(dropCity)
-    console.log(dropDate)
-    emailjs.send("service_vjjgctq","template_n69lm4q",{
-        name: user,
-        message: `Hello your order for a ${cars[carInfo][2]} has been Recived \n
-        You will pick up your car in ${pickCity} on ${pickDate} \n
-        You will return the car in ${dropCity} on ${dropDate} \n
-        If you do not return the car in time you will be hearing from our boss Unikkatil`,
-        emails: emails,
-    });
-    console.log('is working')
+// ---- Sending Order Email -----
+if ( document.URL.includes("order.html") ) {
+    (function(){
+        emailjs.init("Zj9B-Pm5zyK4DxWLD");
+    })();
+    function sendOrder() {
+        event.preventDefault()
+        let pickCity = document.querySelector('#PickCity').value
+        let dropCity = document.querySelector('#DropCity').value
+        let pickDate = document.querySelector('#PickDate').value
+        let dropDate = document.querySelector('#DropDate').value
+        emailjs.send("service_vjjgctq","template_n69lm4q",{
+            name: user,
+            message: `Hello your order for a ${cars[carInfo][2]} has been Recived \n
+            You will pick up your car in ${pickCity} on ${pickDate} \n
+            You will return the car in ${dropCity} on ${dropDate} \n
+            If you do not return the car in time you will be hearing from our boss Unikkatil`,
+            emails: emails,
+        });
+        alert('Information sent to your email')
+    }
 }
