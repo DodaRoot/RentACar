@@ -125,15 +125,18 @@ if ( document.URL.includes("about.html") ) {
 
 // acaunt settings
 let user = localStorage.getItem('user')
+let emails = localStorage.getItem('email')
+let pass = localStorage.getItem('pass')
 let userDisplay = document.querySelector('#login')
 let loginPage = document.querySelector('.display')
 let logoutPage = document.querySelector('.logout')
 user != null ? userDisplay.innerText = user : false ;
 if (user != null && loginPage != null && loginPage != null) {
     loginPage.style.display = 'none';
-    logoutPage.style.display = 'contents';
+    logoutPage.style.display = 'flex';
 }
 else if (logoutPage != null) {
+    loginPage.style.display = 'flex'
     logoutPage.style.display = 'none'
 }
 
@@ -148,6 +151,8 @@ function login() {
             console.log('login is successful')
             login.innerText = userName
             user = localStorage.setItem('user' , userName)
+            emails = localStorage.setItem('email' , email)
+            pass = localStorage.setItem('pass' , password)
             location.reload()
         }
     }
@@ -155,13 +160,16 @@ function login() {
 // Logout function
 function delUser () {
     localStorage.removeItem('user');
+    localStorage.removeItem('carInfo')
+    localStorage.removeItem('email')
+    localStorage.removeItem('pass')
     location.reload()
 }
 
 // Login data
 let loginData = {
     0 : ['admin' , 'admin' , 'admin'],
-    1 : ['doda' , 'doda@gmail.com' , 'password'],
+    1 : ['doda' , 'root.doda@gmail.com' , 'password'],
 }
 
 // order func
@@ -174,4 +182,35 @@ if ( document.URL.includes("order.html") ) {
     orderInfo[2].innerText = `Year 📅: ${cars[carInfo][3]}`
     orderInfo[3].innerText = `Price 💵: ${cars[carInfo][4]}`
     console.log(carInfo)
+}
+if ( document.URL.includes("login.html") ) {
+    let loginInfo = document.querySelectorAll('.logoutInfo h3')
+    loginInfo[0].innerText = `Username - ${user}`
+    loginInfo[1].innerText = `Email - ${emails}`
+    loginInfo[2].innerText = `Password - ${pass}`
+}
+
+// ---- Sending Order Email ------
+(function(){
+    emailjs.init("4dVHRm98BCjYvvgrq");
+})();
+function sendOrder() {
+    event.preventDefault()
+    let pickCity = document.querySelector('#PickCity').value
+    let dropCity = document.querySelector('#DropCity').value
+    let pickDate = document.querySelector('#PickDate').value
+    let dropDate = document.querySelector('#DropDate').value
+    console.log(pickCity)
+    console.log(pickDate)
+    console.log(dropCity)
+    console.log(dropDate)
+    emailjs.send("service_vjjgctq","template_n69lm4q",{
+        name: user,
+        message: `Hello your order for a ${cars[carInfo][2]} has been Recived \n
+        You will pick up your car in ${pickCity} on ${pickDate} \n
+        You will return the car in ${dropCity} on ${dropDate} \n
+        If you do not return the car in time you will be hearing from our boss Unikkatil`,
+        emails: emails,
+    });
+    console.log('is working')
 }
