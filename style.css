@@ -178,7 +178,7 @@ a {
 .reviews img {
     width: 500px;
 }
-/* Footer */
+/* Footer --------- */
 .footer {
     background-color: grey;
     margin-bottom: -5%;
@@ -191,6 +191,7 @@ a {
     font-size: 30px;
 }
 
+/* ------------ */
 /* Order Page */
 .mainContent {
     margin-top: 6%;

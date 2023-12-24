@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Order</title>
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+      async
+    ></script>
     <script src="main.js" async></script>
   </head>
   <body>
@@ -64,7 +68,7 @@
             <input type="date" name="DropDate" id="DropDate" />
           </div>
         </div>
-        <button type="order">Order</button>
+        <button type="order" onclick="sendOrder()">Order</button>
       </form>
     </div>
   </body>
