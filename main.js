@@ -1,27 +1,92 @@
-// Saving the cars in a object
+// Saving the cars info in an object
 let cars = {
-    0 : ['images/servis/Audi Q8.png' , 'Manual' , 'Audi Q8' , '2024' , '300€/month' , '4 Avalible'],
-    1 : ['images/servis/Bugatti.png' , 'Automatic' , 'Bugatti' , '2022' , '500€/month' , '1 Avalible'],
-    2 : ['images/servis/Llamburgini.jpg' , 'Manual' , 'Llamburgini' , '2023' , '500€/month' , '1 Avalible'],
-    3 : ['images/servis/Mercedes AMG GT Coupe.png' , 'Automatic' , 'Mercedes Coupe' , '2024' , '200€/month' , '6 Avalible'],
-    4 : ['images/servis/Ferrari.png' , 'Manual' , 'Ferrari' , '2017' , '800€/month' , '1 Avalible'],
-    5 : ['images/servis/Mercedes E-Class Cabriolet.png' , 'Automatic' , 'Mercedes E-Class' , '2020' , '300€/month' , '3 Avalible'],
-    6 : ['images/servis/Mercedes EQS SUV.png' , 'Manual' , 'Mercedes EQS' , '2023' , '200€/month' , '5 Avalible'],
-    7 : ['images/servis/Mercedes-AMG GT 2024.png' , 'Automatic' , 'Mercedes-AMG' , '2023' , '500€/month' , '2 Avalible'],
+    0 : ['images/servis/Audi Q8.png' , 'Manual' , 'Audi Q8' , '2024' , '30€/day' , '4 Avalible'],
+    1 : ['images/servis/Bugatti.png' , 'Automatic' , 'Bugatti' , '2022' , '50€/day' , '1 Avalible'],
+    2 : ['images/servis/Llamburgini.png' , 'Manual' , 'Llamburgini' , '2023' , '50€/day' , '1 Avalible'],
+    3 : ['images/servis/Mercedes AMG GT Coupe.png' , 'Automatic' , 'Mercedes Coupe' , '2024' , '20€/day' , '6 Avalible'],
+    4 : ['images/servis/Ferrari.png' , 'Manual' , 'Ferrari' , '2017' , '80€/day' , '1 Avalible'],
+    5 : ['images/servis/Mercedes E-Class Cabriolet.png' , 'Automatic' , 'Mercedes E-Class' , '2020' , '30€/day' , '3 Avalible'],
+    6 : ['images/servis/Mercedes EQS SUV.png' , 'Manual' , 'Mercedes EQS' , '2023' , '20€/day' , '5 Avalible'],
+    7 : ['images/servis/Mercedes-AMG GT 2024.png' , 'Automatic' , 'Mercedes-AMG' , '2023' , '50€/day' , '2 Avalible'],
 }
+
+// Login Accounts Data
+let loginData = {
+    0 : ['admin' , 'admin' , 'admin'],
+    1 : ['doda' , 'root.doda@gmail.com' , 'password'],
+}
+
+
+// All Global Scope Variables ----
 
 let servis = document.querySelector('.servis')
 let content = document.createElement('div')
+// Saving car info in to local storage
+let carInfo = localStorage.getItem('carInfo')
+// Sorting cars servis
+let manualText = document.querySelector('#manual')
+let autoText = document.querySelector('#auto')
+let allText = document.querySelector('#all')
+// Account settings and properties
+let user = localStorage.getItem('user')
+let emails = localStorage.getItem('email')
+let pass = localStorage.getItem('pass')
+let userDisplay = document.querySelector('#login')
+let loginPage = document.querySelector('.display')
+let logoutPage = document.querySelector('.logout')
+let reviewForm = document.querySelector('.leaveReview')
 
+// Index page - Cars Population with info
 if ( document.URL.includes("index.html") ) {
+    // Car Cards
     content.setAttribute('class', 'content')
     servis.append(content)
     for (let car in cars) {
         appendCars(car)
+    }    
+    // Hiding the reviews
+    reviewForm.style.display = 'none'
+}
+
+// About page - Animated text
+if ( document.URL.includes("about.html") ) {
+    let anchor = document.querySelector('.contentAbout p')
+    let text = 'Planning your journey is just a click away. Our user-friendly online car reservation system ensures a hassle-free booking process, putting you in control of your travel plans.'
+    let i = 0
+    textAnimation(anchor, text)
+    function textAnimation (anchor, text) {
+        if (i < text.length) {
+            setTimeout (() => {
+                anchor.append(text[i])
+                i++
+                textAnimation(anchor, text)
+            }, 10)  
+        } 
     }
 }
 
-let carInfo = localStorage.getItem('carInfo')
+// Order Page - Content Population
+if ( document.URL.includes("order.html") ) {
+    let orderInfo = document.querySelectorAll('.orderInfo p')
+    let orderImage = document.querySelector('.orderImage img')
+    orderImage.src = cars[carInfo][0]
+    orderInfo[0].innerText = `Car 🚗: ${cars[carInfo][2]}`
+    orderInfo[1].innerText = `Gear ⚙️: ${cars[carInfo][1]}`
+    orderInfo[2].innerText = `Year 📅: ${cars[carInfo][3]}`
+    orderInfo[3].innerText = `Price 💵: ${cars[carInfo][4]}`
+}
+
+// Login page - Info Population
+if ( document.URL.includes("login.html") ) {
+    let loginInfo = document.querySelectorAll('.logoutInfo h3')
+    loginInfo[0].innerText = `Username - ${user}`
+    loginInfo[1].innerText = `Email - ${emails}`
+    loginInfo[2].innerText = `Password - ${pass}`
+}
+
+
+// All functions ----------
+
 // Main appending function
 function appendCars(car) {
     // Creating the elements
@@ -50,19 +115,14 @@ function appendCars(car) {
         else {
             location.replace('order.html')
             carInfo = localStorage.setItem('carInfo' , car)
+            
         }
     });
     btn.innerText = 'Order'
     text.append(btn)
     image.src = cars[car][0]
 }
-
-
-// Sorting cars servis
-let manualText = document.querySelector('#manual')
-let autoText = document.querySelector('#auto')
-let allText = document.querySelector('#all')
-
+// Sorting all car cards
 function allSort() {
     manualText.style.color = 'rgb(131, 131, 131)';
     allText.style.color = 'black';
@@ -76,6 +136,7 @@ function allSort() {
     }
 }
 
+// Sorting manual car cards
 function manualSort() {
     manualText.style.color = 'black';
     allText.style.color = 'rgb(131, 131, 131)';
@@ -91,6 +152,7 @@ function manualSort() {
     }
 }
 
+// Sorting automatic car cards
 function autoSort() {
     autoText.style.color = 'black';
     allText.style.color = 'rgb(128, 128, 128)'
@@ -106,32 +168,12 @@ function autoSort() {
     }
 }
 
-if ( document.URL.includes("about.html") ) {
-    // Animated text in about page
-    let anchor = document.querySelector('.contentAbout p')
-    let text = 'Planning your journey is just a click away. Our user-friendly online car reservation system ensures a hassle-free booking process, putting you in control of your travel plans.'
-    let i = 0
-    textAnimation(anchor, text)
-    function textAnimation (anchor, text) {
-        if (i < text.length) {
-            setTimeout (() => {
-                anchor.append(text[i])
-                i++
-                textAnimation(anchor, text)
-            }, 10)  
-        } 
-    }
+// Checking if user value is null and displaying the correct properties
+if (user != null && reviewForm != null) {
+    userDisplay.innerText = user
+    reviewForm.style.display = 'flex'
 }
-
-// acaunt settings
-let user = localStorage.getItem('user')
-let emails = localStorage.getItem('email')
-let pass = localStorage.getItem('pass')
-let userDisplay = document.querySelector('#login')
-let loginPage = document.querySelector('.display')
-let logoutPage = document.querySelector('.logout')
-user != null ? userDisplay.innerText = user : false ;
-if (user != null && loginPage != null && loginPage != null) {
+else if (user != null && loginPage != null && loginPage != null) {
     loginPage.style.display = 'none';
     logoutPage.style.display = 'flex';
 }
@@ -157,6 +199,7 @@ function login() {
         }
     }
 }
+
 // Logout function
 function delUser () {
     localStorage.removeItem('user');
@@ -166,30 +209,7 @@ function delUser () {
     location.reload()
 }
 
-// Login data
-let loginData = {
-    0 : ['admin' , 'admin' , 'admin'],
-    1 : ['doda' , 'root.doda@gmail.com' , 'password'],
-}
-
-// order func
-if ( document.URL.includes("order.html") ) {
-    let orderInfo = document.querySelectorAll('.orderInfo p')
-    let orderImage = document.querySelector('.orderImage img')
-    orderImage.src = cars[carInfo][0]
-    orderInfo[0].innerText = `Car 🚗: ${cars[carInfo][2]}`
-    orderInfo[1].innerText = `Gear ⚙️: ${cars[carInfo][1]}`
-    orderInfo[2].innerText = `Year 📅: ${cars[carInfo][3]}`
-    orderInfo[3].innerText = `Price 💵: ${cars[carInfo][4]}`
-}
-if ( document.URL.includes("login.html") ) {
-    let loginInfo = document.querySelectorAll('.logoutInfo h3')
-    loginInfo[0].innerText = `Username - ${user}`
-    loginInfo[1].innerText = `Email - ${emails}`
-    loginInfo[2].innerText = `Password - ${pass}`
-}
-
-// ---- Sending Order Email -----
+// ---- Sending Order Email ------------
 if ( document.URL.includes("order.html") ) {
     (function(){
         emailjs.init("Zj9B-Pm5zyK4DxWLD");
@@ -210,4 +230,45 @@ if ( document.URL.includes("order.html") ) {
         });
         alert('Information sent to your email')
     }
+    // Sending test drive order -----
+    function testDrive() {
+        emailjs.send("service_vjjgctq","template_n69lm4q",{
+            name: user,
+            message: `In order to test Drive one of our cars you have to come to our nearest location in Prishtina`,
+            emails: emails,
+        });
+        alert('Information for test drive sent to your email')
+    }
+}
+
+// Sign Up Event
+let indexOfObject = 2
+function signUp () {
+    event.preventDefault()
+    let userName = document.querySelector('#username').value
+    let email = document.querySelector('#email').value
+    let password = document.querySelector('#password').value
+    loginData.indexOfObject = [userName , email , password]
+    console.log(loginData)
+    indexOfObject++
+    alert('Sign Up was successful \nPlease Login to continue')
+}
+
+
+function leaveReview() {
+    event.preventDefault()
+    let reviewsAppend = document.querySelector('.reviews')
+    let div = document.createElement('div')
+    let img = document.createElement('img')
+    let h2 = document.createElement('h2')
+    let p = document.createElement('p')
+    let reviewText = document.querySelector('#reviewText').value
+    reviewsAppend.append(div)
+    div.setAttribute('class', 'card')
+    div.append(img)
+    div.append(h2)
+    div.append(p)
+    img.src = 'images/User.png'
+    h2.innerText = user
+    p.innerText = reviewText
 }

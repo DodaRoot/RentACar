@@ -115,6 +115,7 @@ a {
     justify-content: center;
     align-items: center;
     gap: 10%;
+    color: white;
 }
 .card {
     padding: 2%;
@@ -142,7 +143,7 @@ a {
 .text {
     border-radius: 20px;
     width: 115%;
-    background-color: rgb(194, 194, 194);
+    background-color: rgb(116, 116, 116);
     display: flex;
     justify-content: space-between;
     font-size: 17px;
@@ -159,7 +160,7 @@ a {
     cursor: pointer;
 }
 .content button:hover {
-    background-color: antiquewhite;
+    background-color: rgb(255, 185, 92);
 }
 /* Reviews content */
 .reviews {
@@ -173,10 +174,30 @@ a {
     font-size: 15px;
 }
 .reviews .card {
+    font-size: 22px;
     width: 400px;
+    border: 1px solid black;
+    border-radius: 15%;
 }
 .reviews img {
-    width: 500px;
+    width: fit-content;
+}
+.leaveReview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    font-size: 25px;
+}
+.leaveReview .form {
+    display: flex;
+    flex-direction: column;
+}
+.leaveReview button {
+    margin-top: 5px;
+    width: 150px;
+    height: 35px;
+    font-size: 22px;
 }
 /* Footer --------- */
 .footer {
@@ -234,8 +255,14 @@ a {
     align-items: center;
     border-radius: 20px;
     height: 80px;
-    width: 30%;
+    width: 320px;
     font-size: 40px;
+    margin: 5%;
+}
+.brdr {
+    height: 100%;
+    background-color: red;
+    width: 2px;
 }
 .orderState input {
     display: flex;
