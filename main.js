@@ -169,6 +169,7 @@ function autoSort() {
 }
 
 // Checking if user value is null and displaying the correct properties
+user != null ? userDisplay.innerText = user : false ;
 if (user != null && reviewForm != null) {
     userDisplay.innerText = user
     reviewForm.style.display = 'flex'
