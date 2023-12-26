@@ -143,12 +143,18 @@ a {
 .text {
     border-radius: 20px;
     width: 115%;
+    height: 55px;
     background-color: rgb(116, 116, 116);
     display: flex;
     justify-content: space-between;
     font-size: 17px;
     font-weight: 700;
     padding: 10px;
+    cursor: pointer;
+}
+.text p:hover {
+    border-bottom: 2px solid rgb(255, 255, 255);
+    
 }
 .content button {
     font-size: 19px;
@@ -239,35 +245,28 @@ a {
 }
 /* Order Input */
 .orderState {
-    margin-top: 5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #838383;
-    color: white;
+    color: rgb(0, 0, 0);
     height: 270px;
 }
 .orderState #orderForm {
-    margin: 5% 0px 5% 0px;
+    margin: 5% 0% 5% 0%;
     font-size: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .orderState #orderForm button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 20px;
-    height: 80px;
-    width: 320px;
+    height: 70px;
+    width: 290px;
     font-size: 40px;
-    margin: 5%;
+    margin: 1%;
 }
-.brdr {
-    height: 100%;
-    background-color: red;
-    width: 2px;
+.orderButtons {
+    margin-left: 15%;
 }
 .orderState input {
     display: flex;
@@ -284,8 +283,66 @@ a {
     width: 80%;
 }
 .locationOrder , .dateOrder {
-    width: 30%;
+    width: 40%;
 }
 .locationOrder div , .dateOrder div{
     margin: 5%;
 }
+
+
+/* Order modal --------------------------------------- */
+/* Modal button */
+#myBtn{
+    width: 100%;
+    height: 50px;
+    font-size: 26px;
+    border-radius: 15px;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    animation: orderDrop 2s ease;
+  }
+  @keyframes orderDrop {
+    from {
+        margin-top: -5%;
+        opacity: 0;
+    }
+    to {
+        margin-top: 0%;
+        opacity: 1;
+    }
+}
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }

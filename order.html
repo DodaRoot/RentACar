@@ -36,42 +36,55 @@
         <p>Year 📅: 2024</p>
         <hr />
         <p>Price 💵: 300€/month</p>
+        <hr />
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Push Order</button>
       </div>
     </div>
-    <div class="orderState">
-      <form id="orderForm" action="">
-        <div class="locationOrder">
-          <div>
-            <label for="PickCity">Pick Up City</label>
-            <select name="PickCity" id="PickCity">
-              <option value="Prishtine">Prishtine</option>
-              <option value="Gjakove">Gjakove</option>
-              <option value="Prizren">Prizren</option>
-            </select>
-          </div>
-          <div>
-            <label for="DropCity">Return City</label>
-            <select name="DropCity" id="DropCity">
-              <option value="Prishtine">Prishtine</option>
-              <option value="Gjakove">Gjakove</option>
-              <option value="Prizren">Prizren</option>
-            </select>
-          </div>
+
+    <!-- Modali ---------------------->
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="orderState">
+          <form id="orderForm" action="">
+            <div class="locationOrder">
+              <div>
+                <label for="PickCity">Pick Up City</label>
+                <select name="PickCity" id="PickCity">
+                  <option value="Prishtine">Prishtine</option>
+                  <option value="Gjakove">Gjakove</option>
+                  <option value="Prizren">Prizren</option>
+                </select>
+              </div>
+              <div>
+                <label for="DropCity">Return City</label>
+                <select name="DropCity" id="DropCity">
+                  <option value="Prishtine">Prishtine</option>
+                  <option value="Gjakove">Gjakove</option>
+                  <option value="Prizren">Prizren</option>
+                </select>
+              </div>
+            </div>
+            <div class="dateOrder">
+              <div>
+                <label for="PickDate">Pick Up Date</label>
+                <input type="date" name="PickDate" id="PickDate" />
+              </div>
+              <div>
+                <label for="DropDate">Return Date</label>
+                <input type="date" name="DropDate" id="DropDate" />
+              </div>
+            </div>
+            <div class="orderButtons">
+              <button type="order" onclick="sendOrder()">Order</button>
+              <button type="order" onclick="testDrive()">Test Drive</button>
+            </div>
+          </form>
         </div>
-        <div class="dateOrder">
-          <div>
-            <label for="PickDate">Pick Up Date</label>
-            <input type="date" name="PickDate" id="PickDate" />
-          </div>
-          <div>
-            <label for="DropDate">Return Date</label>
-            <input type="date" name="DropDate" id="DropDate" />
-          </div>
-        </div>
-        <button type="order" onclick="sendOrder()">Order</button>
-        <div class="brdr"></div>
-        <button type="order" onclick="sendOrder()">Test Drive</button>
-      </form>
+      </div>
     </div>
   </body>
 </html>

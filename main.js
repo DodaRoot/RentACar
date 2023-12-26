@@ -35,6 +35,18 @@ let userDisplay = document.querySelector('#login')
 let loginPage = document.querySelector('.display')
 let logoutPage = document.querySelector('.logout')
 let reviewForm = document.querySelector('.leaveReview')
+// Get the modal
+let modal = document.getElementById("myModal");
+// Get the button that opens the modal
+let btn = document.getElementById("myBtn");
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0]
+
+let pickData = localStorage.getItem('pickCity')
+let dropData = localStorage.getItem('dropCity')
+let pickDateData = localStorage.getItem('pickDate')
+let dropDateData = localStorage.getItem('dropDate')
+let tableData = document.querySelector('.tableData')
 
 // Index page - Cars Population with info
 if ( document.URL.includes("index.html") ) {
@@ -82,11 +94,13 @@ if ( document.URL.includes("login.html") ) {
     loginInfo[0].innerText = `Username - ${user}`
     loginInfo[1].innerText = `Email - ${emails}`
     loginInfo[2].innerText = `Password - ${pass}`
+    if (pickData != null && dropData != null && pickDateData != null && dropDateData != null) {
+        tableData.innerText = `Pick Up Location: ${pickData} \nReturn Location ${dropData}\nPick Up Date - ${pickDateData}\nReturn Date - ${dropDateData}`
+    }
 }
 
 
 // All functions ----------
-
 // Main appending function
 function appendCars(car) {
     // Creating the elements
@@ -196,7 +210,7 @@ function login() {
             user = localStorage.setItem('user' , userName)
             emails = localStorage.setItem('email' , email)
             pass = localStorage.setItem('pass' , password)
-            location.reload()
+            location.reload() 
         }
     }
 }
@@ -210,6 +224,8 @@ function delUser () {
     location.reload()
 }
 
+
+console.log(pickData + dropData + pickDateData + dropDateData)
 // ---- Sending Order Email ------------
 if ( document.URL.includes("order.html") ) {
     (function(){
@@ -221,25 +237,45 @@ if ( document.URL.includes("order.html") ) {
         let dropCity = document.querySelector('#DropCity').value
         let pickDate = document.querySelector('#PickDate').value
         let dropDate = document.querySelector('#DropDate').value
-        emailjs.send("service_vjjgctq","template_n69lm4q",{
-            name: user,
-            message: `Hello your order for a ${cars[carInfo][2]} has been Recived \n
-            You will pick up your car in ${pickCity} on ${pickDate} \n
-            You will return the car in ${dropCity} on ${dropDate} \n
-            If you do not return the car in time you will be hearing from our boss Unikkatil`,
-            emails: emails,
-        });
+        // Saving values in local storage
+        pickData = localStorage.setItem('pickCity' , pickCity)
+        dropData = localStorage.setItem('dropCity' , dropCity)
+        pickDateData = localStorage.setItem('pickDate' , pickDate)
+        dropDateData = localStorage.setItem('dropDate' , dropDate)
+        // emailjs.send("service_vjjgctq","template_n69lm4q",{
+        //     name: user,
+        //     message: `Hello your order for a ${cars[carInfo][2]} has been Recived \n
+        //     You will pick up your car in ${pickCity} on ${pickDate} \n
+        //     You will return the car in ${dropCity} on ${dropDate} \n
+        //     If you do not return the car in time you will be hearing from our boss Unikkatil`,
+        //     emails: emails,
+        // });
         alert('Information sent to your email')
+        location.reload()
     }
     // Sending test drive order -----
     function testDrive() {
-        emailjs.send("service_vjjgctq","template_n69lm4q",{
-            name: user,
-            message: `In order to test Drive one of our cars you have to come to our nearest location in Prishtina`,
-            emails: emails,
-        });
+        // emailjs.send("service_vjjgctq","template_n69lm4q",{
+        //     name: user,
+        //     message: `In order to test Drive one of our cars you have to come to our nearest location in Prishtina`,
+        //     emails: emails,
+        // });
         alert('Information for test drive sent to your email')
     }
+    // Modali ---------
+btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 }
 
 // Sign Up Event
@@ -273,3 +309,8 @@ function leaveReview() {
     h2.innerText = user
     p.innerText = reviewText
 }
+
+
+// ---- Modal for order page
+
+
