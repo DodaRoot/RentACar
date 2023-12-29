@@ -67,32 +67,3 @@ body {
     font-size: 24px;
 }
 
-/* Parallax effect */
-/* Main Container */
-.parallax {
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-.parallax.one img {
-    position: fixed;
-    z-index: -1;
-}
-.parallax.one {
-    background-image: url(images/Sky.BG.png);
-}
-.parallax.two {
-    background-color: rgb(255, 255, 255);
-}
-.parallax.three {
-    background-color: rgb(255, 0, 0);
-}
-.parallax.four {
-    background-color: rgb(0, 255, 21);
-}
