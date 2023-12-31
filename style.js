@@ -14,12 +14,13 @@ window.onscroll = function() {
 let link = document.querySelectorAll('.navBar p')
 let actLink = document.querySelector('.active')
 let overlay = document.querySelector('.navBar .overlay')
-window.onload = function () {
+function navLoad() {
     let domWidth = document.body.offsetWidth
     let pos = actLink.getBoundingClientRect()
     overlay.style.left = (pos.x / domWidth) * 101 + '%'
     overlay.style.width = pos.width + 'px'
 }
+navLoad()
 link.forEach((x) => {
     x.addEventListener('mouseover' , () => {
         let domWidth = document.body.offsetWidth
@@ -81,4 +82,53 @@ function slidePre() {
         imgDiv.style.animation = '1s slideIn ease-in-out';
         img.src = sliderCont[sliderIndex][1]
     } , 900)
+}
+
+// Sorting cars
+let cars = document.querySelectorAll('.wraper')
+function auto() {
+    cars.forEach((x) => {
+        let type = x.getAttribute('data-type')
+        if (type == 'manual') {
+            x.style.display = 'none'
+        }
+        else {
+            x.style.display = 'flex'
+        }
+    })
+}
+function manual() {
+    cars.forEach((x) => {
+        let type = x.getAttribute('data-type')
+        if (type == 'auto') {
+            x.style.display = 'none'
+        }
+        else {
+            x.style.display = 'flex'
+        }
+    })
+}
+function allCars() {
+    cars.forEach((x) => {
+        x.style.display = 'flex'
+    })
+}
+
+// NavBar Switching 
+window.onscroll = function() {
+    let percentage = (window.pageYOffset / scrollHeight) * 100;
+    if (percentage >= 28) {
+        console.log('change')
+        link[0].removeAttribute('class' , 'active')
+        link[2].setAttribute('class' , 'active')
+        actLink = document.querySelector('.active')
+        navLoad()
+    }
+    else if (percentage <= 28) {
+        console.log('change')
+        link[2].removeAttribute('class' , 'active')
+        link[0].setAttribute('class' , 'active')
+        actLink = document.querySelector('.active')
+        navLoad()
+    }
 }
