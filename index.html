@@ -40,93 +40,116 @@
       </button>
     </div>
     <!-- Sorting -->
-    <button onclick="auto()">Auto</button>
-    <button onclick="manual()">Manual</button>
-    <button onclick="allCars()">All</button>
+    <div class="sortButtons">
+      <button onclick="auto()">Auto</button>
+      <button onclick="manual()">Manual</button>
+      <button onclick="allCars()">All</button>
+    </div>
+
     <!-- Cars Section -->
     <div class="cardContent">
-      <div class="wraper" data-type="auto">
-        <div class="card-front">
-          <img src="images/Cards/Audi Q8.png" alt="Avatar" />
-        </div>
-        <div class="card-back">
-          <h2>Audi Q8</h2>
-          <p>Type ⚙️: Auto / Year 📅: 2022 / Price 💵: 20/day</p>
-          <button>Order</button>
-        </div>
-      </div>
-      <div class="wraper" data-type="auto">
-        <div class="card-front">
-          <img src="images/Cards/Llamburgini.png" alt="Avatar" />
-        </div>
-        <div class="card-back">
-          <h2>Llamburgini</h2>
-          <p>Type ⚙️: Auto / Year 📅: 2023 / Price 💵: 50/day</p>
-          <button>Order</button>
+      <div class="cardWrap">
+        <div class="wraper" data-type="auto">
+          <div class="card-front">
+            <img src="images/Cards/Audi Q8.png" alt="Avatar" />
+          </div>
+          <div class="card-back">
+            <h2>Audi Q8</h2>
+            <p>Type ⚙️: Auto / Year 📅: 2022 / Price 💵: 20/day</p>
+            <button>Order</button>
+          </div>
         </div>
       </div>
-      <div class="wraper" data-type="auto">
-        <div class="card-front">
-          <img src="images/Cards/Bugatti.png" alt="Avatar" />
-        </div>
-        <div class="card-back">
-          <h2>Bugatti</h2>
-          <p>Type ⚙️: Auto / Year 📅: 2021 / Price 💵: 60/day</p>
-          <button>Order</button>
+      <div class="cardWrap">
+        <div class="wraper" data-type="auto">
+          <div class="card-front">
+            <img src="images/Cards/Llamburgini.png" alt="Avatar" />
+          </div>
+          <div class="card-back">
+            <h2>Llamburgini</h2>
+            <p>Type ⚙️: Auto / Year 📅: 2023 / Price 💵: 50/day</p>
+            <button>Order</button>
+          </div>
         </div>
       </div>
-      <div class="wraper" data-type="auto">
-        <div class="card-front">
-          <img src="images/Cards/Mercedes-AMG GT 2024.png" alt="Avatar" />
+      <div class="cardWrap">
+        <div class="wraper" data-type="auto">
+          <div class="card-front">
+            <img src="images/Cards/Bugatti.png" alt="Avatar" />
+          </div>
+          <div class="card-back">
+            <h2>Bugatti</h2>
+            <p>Type ⚙️: Auto / Year 📅: 2021 / Price 💵: 60/day</p>
+            <button>Order</button>
+          </div>
         </div>
-        <div class="card-back">
-          <h2>Mercedes AMG GT</h2>
-          <p>Type ⚙️: Auto / Year 📅: 2020 / Price 💵: 40/day</p>
-          <button>Order</button>
+      </div>
+      <div class="cardWrap">
+        <div class="wraper" data-type="auto">
+          <div class="card-front">
+            <img src="images/Cards/Mercedes-AMG GT 2024.png" alt="Avatar" />
+          </div>
+          <div class="card-back">
+            <h2>Mercedes AMG GT</h2>
+            <p>Type ⚙️: Auto / Year 📅: 2020 / Price 💵: 40/day</p>
+            <button>Order</button>
+          </div>
         </div>
       </div>
       <!-- Manual -->
-      <div class="wraper" data-type="manual">
-        <div class="card-front">
-          <img src="images/Cards/Mercedes E-Class Cabriolet.png" alt="Avatar" />
-        </div>
-        <div class="card-back">
-          <h2>Mercedes E-Class Cabriolet</h2>
-          <p>Type ⚙️: Manual / Year 📅: 2018 / Price 💵: 15/day</p>
-          <button>Order</button>
-        </div>
-      </div>
-      <div class="wraper" data-type="manual">
-        <div class="card-front">
-          <img src="images/Cards/Mercedes AMG GT Coupe.png" alt="Avatar" />
-        </div>
-        <div class="card-back">
-          <h2>Mercedes AMG GT</h2>
-          <p>Type ⚙️: Manual / Year 📅: 2020 / Price 💵: 35/day</p>
-          <button>Order</button>
+      <div class="cardWrap">
+        <div class="wraper" data-type="manual">
+          <div class="card-front">
+            <img
+              src="images/Cards/Mercedes E-Class Cabriolet.png"
+              alt="Avatar"
+            />
+          </div>
+          <div class="card-back">
+            <h2>Mercedes E-Class Cabriolet</h2>
+            <p>Type ⚙️: Manual / Year 📅: 2018 / Price 💵: 15/day</p>
+            <button>Order</button>
+          </div>
         </div>
       </div>
-      <div class="wraper" data-type="manual">
-        <div class="card-front">
-          <img src="images/Cards/Mercedes EQS SUV.png" alt="Avatar" />
-        </div>
-        <div class="card-back">
-          <h2>Mercedes EQS SUV</h2>
-          <p>Type ⚙️: Manual / Year 📅: 2016 / Price 💵: 25/day</p>
-          <button>Order</button>
-        </div>
-      </div>
-      <div class="wraper" data-type="manual">
-        <div class="card-front">
-          <img src="images/Cards/Mercedes GLB SUV.png" alt="Avatar" />
-        </div>
-        <div class="card-back">
-          <h2>Mercedes GLB SUV</h2>
-          <p>Type ⚙️: Manual / Year 📅: 2021 / Price 💵: 45/day</p>
-          <button>Order</button>
+      <div class="cardWrap">
+        <div class="wraper" data-type="manual">
+          <div class="card-front">
+            <img src="images/Cards/Mercedes AMG GT Coupe.png" alt="Avatar" />
+          </div>
+          <div class="card-back">
+            <h2>Mercedes AMG GT</h2>
+            <p>Type ⚙️: Manual / Year 📅: 2020 / Price 💵: 35/day</p>
+            <button>Order</button>
+          </div>
         </div>
       </div>
-      <div class="Reviews"></div>
+      <div class="cardWrap">
+        <div class="wraper" data-type="manual">
+          <div class="card-front">
+            <img src="images/Cards/Mercedes EQS SUV.png" alt="Avatar" />
+          </div>
+          <div class="card-back">
+            <h2>Mercedes EQS SUV</h2>
+            <p>Type ⚙️: Manual / Year 📅: 2016 / Price 💵: 25/day</p>
+            <button>Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="cardWrap">
+        <div class="wraper" data-type="manual">
+          <div class="card-front">
+            <img src="images/Cards/Mercedes GLB SUV.png" alt="Avatar" />
+          </div>
+          <div class="card-back">
+            <h2>Mercedes GLB SUV</h2>
+            <p>Type ⚙️: Manual / Year 📅: 2021 / Price 💵: 45/day</p>
+            <button>Order</button>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- Reviews Section -->
+    <div class="Reviews"></div>
   </body>
 </html>

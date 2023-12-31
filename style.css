@@ -173,6 +173,13 @@ a {
         margin-top: 20%;
     }
 }
+/* Sorting Buttons */
+.sortButtons {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Car Cards */
 .cardContent {
@@ -183,15 +190,19 @@ a {
     flex-wrap: wrap;
     z-index: 1;
 }
-.wraper {
+.cardWrap {
     margin: 3%;
     width: 550px;
     height: 300px;
+}
+.wraper {
+    height: 100%;
+    width: 100%;
     transform-style: preserve-3d;
     transition: transform .6s ease-in-out;
     perspective: 4000px;
 }
-.wraper:hover {
+.cardWrap:hover .wraper {
     transform: rotateY(180deg);
 }
 .wraper .card-front img {

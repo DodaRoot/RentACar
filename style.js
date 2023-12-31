@@ -85,27 +85,33 @@ function slidePre() {
 }
 
 // Sorting cars
-let cars = document.querySelectorAll('.wraper')
+let cars = document.querySelectorAll('.cardWrap')
+let wrap = document.querySelectorAll('.wraper')
+console.log(cars)
 function auto() {
+    let i = 0
     cars.forEach((x) => {
-        let type = x.getAttribute('data-type')
+        let type = wrap[i].getAttribute('data-type')
         if (type == 'manual') {
             x.style.display = 'none'
         }
         else {
             x.style.display = 'flex'
         }
+        i++
     })
 }
 function manual() {
+    let i = 0
     cars.forEach((x) => {
-        let type = x.getAttribute('data-type')
+        let type = wrap[i].getAttribute('data-type')
         if (type == 'auto') {
             x.style.display = 'none'
         }
         else {
             x.style.display = 'flex'
         }
+        i++
     })
 }
 function allCars() {
@@ -117,15 +123,13 @@ function allCars() {
 // NavBar Switching 
 window.onscroll = function() {
     let percentage = (window.pageYOffset / scrollHeight) * 100;
-    if (percentage >= 28) {
-        console.log('change')
+    if (percentage >= 32) {
         link[0].removeAttribute('class' , 'active')
         link[2].setAttribute('class' , 'active')
         actLink = document.querySelector('.active')
         navLoad()
     }
-    else if (percentage <= 28) {
-        console.log('change')
+    else if (percentage <= 32) {
         link[2].removeAttribute('class' , 'active')
         link[0].setAttribute('class' , 'active')
         actLink = document.querySelector('.active')
