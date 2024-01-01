@@ -6,6 +6,7 @@ body {
     padding: 0;
     overflow-x: hidden;
     font-family: sans-serif;
+    background-color: white;
 }
 
 /* The scroll bar */
@@ -291,6 +292,56 @@ body {
     margin: 5%;
 }
 
+/* About Page */
 .pageContent {
-    
+    margin-top: 10%;
+    height: 50vh;
+    width: 100%;
+    background-color: rgb(57, 57, 57);
+    color: white;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.pageContent p {
+    padding: 0% 5%;
+}
+.address {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5%;
+    font-size: 22px;
+}
+.text table{
+    border-collapse: collapse;
+}
+.text table th {
+    background-color: rgb(79, 212, 79);
+}
+.text table td , .text table th {
+    padding: 8px 12px;
+}
+.text table tr:hover {
+    background-color: bisque;
+    cursor: pointer;
+}
+
+/* Employe Content */
+.employContent {
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+.employCard {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    overflow: hidden;
 }
