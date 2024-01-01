@@ -3,11 +3,7 @@
 let scroll = document.querySelector('.scrollBar')
 // Finding the scroll height
 let scrollHeight = document.body.scrollHeight - window.innerHeight
-// Changing scroll bar size
-window.onscroll = function() {
-    let percentage = (window.pageYOffset / scrollHeight) * 100;
-    scroll.style.height = `${percentage}%`
-}
+
 
 // Navbar Hover Effect
 // Navbar links
@@ -21,6 +17,7 @@ function navLoad() {
     overlay.style.width = pos.width + 'px'
 }
 navLoad()
+let click = false;
 link.forEach((x) => {
     x.addEventListener('mouseover' , () => {
         let domWidth = document.body.offsetWidth
@@ -41,7 +38,7 @@ link.forEach((x) => {
 let sliderCont = {
     0 : ['Sedan - The perfect car for a family trip' , 'images/SliderImg/Slider1.png'],
     1 : ['Coupe - Have the best adventure you can !' , 'images/SliderImg/Slider2.png'],
-    2 : ['Sport Car - Drive as fast as you can with this monster' , 'images/SliderImg/Slider3.png'],
+    2 : ['Sport Car - Drive as fast as you can with this car' , 'images/SliderImg/Slider3.png'],
 }
 let sliderIndex = 0
 let imgDiv = document.querySelector('.header .img')
@@ -87,8 +84,11 @@ function slidePre() {
 // Sorting cars
 let cars = document.querySelectorAll('.cardWrap')
 let wrap = document.querySelectorAll('.wraper')
-console.log(cars)
+let sortButtons = document.querySelectorAll('.sortButtons button')
 function auto() {
+    sortButtons[0].style.color = 'black'
+    sortButtons[1].style.color = 'rgb(148, 148, 148)'
+    sortButtons[2].style.color = 'rgb(148, 148, 148)'
     let i = 0
     cars.forEach((x) => {
         let type = wrap[i].getAttribute('data-type')
@@ -102,6 +102,9 @@ function auto() {
     })
 }
 function manual() {
+    sortButtons[0].style.color = 'rgb(148, 148, 148)'
+    sortButtons[1].style.color = 'rgb(148, 148, 148)'
+    sortButtons[2].style.color = 'black'
     let i = 0
     cars.forEach((x) => {
         let type = wrap[i].getAttribute('data-type')
@@ -115,23 +118,43 @@ function manual() {
     })
 }
 function allCars() {
+    sortButtons[0].style.color = 'rgb(148, 148, 148)'
+    sortButtons[1].style.color = 'black'
+    sortButtons[2].style.color = 'rgb(148, 148, 148)'
     cars.forEach((x) => {
         x.style.display = 'flex'
     })
 }
 
-// NavBar Switching 
+// Scroll functions
 window.onscroll = function() {
+    // Changing scroll bar size
     let percentage = (window.pageYOffset / scrollHeight) * 100;
-    if (percentage >= 32) {
+    scroll.style.height = `${percentage}%`
+    // Finding the locations in the page
+    // Home section location
+    let home = document.querySelector('#home')
+    let homeLoc = home.getBoundingClientRect().height / scrollHeight * 100 + 5
+    // Cars Section location
+    let cars = document.querySelector('#cars')
+    let carsLoc = cars.getBoundingClientRect().height / scrollHeight * 100 + 5
+    // Changing navbar link
+    if (percentage <= homeLoc) {
+        link[0].setAttribute('class' , 'active')
+        link[2].removeAttribute('class' , 'active')
+        actLink = document.querySelector('.active')
+        navLoad()
+    }
+    else if (percentage >= homeLoc && percentage <= carsLoc) {
         link[0].removeAttribute('class' , 'active')
         link[2].setAttribute('class' , 'active')
         actLink = document.querySelector('.active')
         navLoad()
     }
-    else if (percentage <= 32) {
+    else if (percentage >= carsLoc + 20) {
+        link[0].removeAttribute('class' , 'active')
         link[2].removeAttribute('class' , 'active')
-        link[0].setAttribute('class' , 'active')
+        link[3].setAttribute('class' , 'active')
         actLink = document.querySelector('.active')
         navLoad()
     }

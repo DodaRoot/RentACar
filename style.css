@@ -1,3 +1,6 @@
+* {
+    scroll-behavior: smooth;
+}
 body {
     margin: 0;
     padding: 0;
@@ -65,7 +68,7 @@ body {
     cursor: pointer;
 }
 /* Navbar links hover effect */
-a {
+.navBar a {
     text-decoration: none;
     color: inherit;
 }
@@ -174,13 +177,34 @@ a {
     }
 }
 /* Sorting Buttons */
+.sortContain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
 .sortButtons {
     margin-top: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 5%;
+    font-size: 24px;
+    color: rgb(148, 148, 148);
+    width: 300px;
 }
-
+.sortButtons button:hover {
+    border-bottom: 1px solid black;
+}
+.sortButtons button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
 /* Car Cards */
 .cardContent {
     margin-top: 5%;
@@ -194,8 +218,10 @@ a {
     margin: 3%;
     width: 550px;
     height: 300px;
+    border-radius: 15%;
 }
 .wraper {
+    border-radius: inherit;
     height: 100%;
     width: 100%;
     transform-style: preserve-3d;
@@ -206,10 +232,12 @@ a {
     transform: rotateY(180deg);
 }
 .wraper .card-front img {
+    border-radius: inherit;
     width: 100%;
     height: 100%;
 }
 .card-front , .card-back {
+    border-radius: inherit;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -227,4 +255,42 @@ a {
     justify-content: center;
     align-items: center;
     font-size: 22px;
+}
+
+/* Reviews */
+.reviews {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+.reviews .card {
+    text-align: center;
+    width: 300px;
+}
+.reviews .card img {
+    width: 300px;
+}
+/* Footer */
+.footer {
+    margin-top: 5%;
+    height: 150px;
+    width: 100%;
+    background-color: rgb(215, 215, 215);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.footer .social {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer .social a {
+    margin: 5%;
+}
+
+.pageContent {
+    
 }

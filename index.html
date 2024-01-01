@@ -10,7 +10,7 @@
     <script src="style.js" async></script>
   </head>
   <body>
-    <!-- Creating the interesting scroll bar -->
+    <!-- Creating a interesting scroll bar -->
     <div class="scrollBarPath">
       <div class="scrollBar"></div>
     </div>
@@ -19,15 +19,15 @@
       <div class="img"></div>
       <div>
         <div class="overlay"></div>
-        <p class="active">Home</p>
-        <p>About</p>
-        <p>Cars</p>
-        <p>Review</p>
+        <p class="active"><a href="#home">Home</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="#cars">Cars</a></p>
+        <p><a href="#reviews">Reviews</a></p>
         <p>Login</p>
       </div>
     </div>
     <!-- Header Content -->
-    <div class="header">
+    <div class="header" id="home">
       <div class="text"><p>Are you looking for a car ?</p></div>
       <div class="img"><img src="images/HeaderImg.png" alt="" /></div>
     </div>
@@ -40,14 +40,16 @@
       </button>
     </div>
     <!-- Sorting -->
-    <div class="sortButtons">
-      <button onclick="auto()">Auto</button>
-      <button onclick="manual()">Manual</button>
-      <button onclick="allCars()">All</button>
+    <div class="sortContain">
+      <div class="sortButtons">
+        <button onclick="auto()">Auto</button>
+        <button onclick="allCars()">All</button>
+        <button onclick="manual()">Manual</button>
+      </div>
     </div>
 
     <!-- Cars Section -->
-    <div class="cardContent">
+    <div class="cardContent" id="cars">
       <div class="cardWrap">
         <div class="wraper" data-type="auto">
           <div class="card-front">
@@ -56,6 +58,21 @@
           <div class="card-back">
             <h2>Audi Q8</h2>
             <p>Type ⚙️: Auto / Year 📅: 2022 / Price 💵: 20/day</p>
+            <button>Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="cardWrap">
+        <div class="wraper" data-type="manual">
+          <div class="card-front">
+            <img
+              src="images/Cards/Mercedes E-Class Cabriolet.png"
+              alt="Avatar"
+            />
+          </div>
+          <div class="card-back">
+            <h2>Mercedes E-Class Cabriolet</h2>
+            <p>Type ⚙️: Manual / Year 📅: 2018 / Price 💵: 15/day</p>
             <button>Order</button>
           </div>
         </div>
@@ -73,46 +90,6 @@
         </div>
       </div>
       <div class="cardWrap">
-        <div class="wraper" data-type="auto">
-          <div class="card-front">
-            <img src="images/Cards/Bugatti.png" alt="Avatar" />
-          </div>
-          <div class="card-back">
-            <h2>Bugatti</h2>
-            <p>Type ⚙️: Auto / Year 📅: 2021 / Price 💵: 60/day</p>
-            <button>Order</button>
-          </div>
-        </div>
-      </div>
-      <div class="cardWrap">
-        <div class="wraper" data-type="auto">
-          <div class="card-front">
-            <img src="images/Cards/Mercedes-AMG GT 2024.png" alt="Avatar" />
-          </div>
-          <div class="card-back">
-            <h2>Mercedes AMG GT</h2>
-            <p>Type ⚙️: Auto / Year 📅: 2020 / Price 💵: 40/day</p>
-            <button>Order</button>
-          </div>
-        </div>
-      </div>
-      <!-- Manual -->
-      <div class="cardWrap">
-        <div class="wraper" data-type="manual">
-          <div class="card-front">
-            <img
-              src="images/Cards/Mercedes E-Class Cabriolet.png"
-              alt="Avatar"
-            />
-          </div>
-          <div class="card-back">
-            <h2>Mercedes E-Class Cabriolet</h2>
-            <p>Type ⚙️: Manual / Year 📅: 2018 / Price 💵: 15/day</p>
-            <button>Order</button>
-          </div>
-        </div>
-      </div>
-      <div class="cardWrap">
         <div class="wraper" data-type="manual">
           <div class="card-front">
             <img src="images/Cards/Mercedes AMG GT Coupe.png" alt="Avatar" />
@@ -125,6 +102,18 @@
         </div>
       </div>
       <div class="cardWrap">
+        <div class="wraper" data-type="auto">
+          <div class="card-front">
+            <img src="images/Cards/Bugatti.png" alt="Avatar" />
+          </div>
+          <div class="card-back">
+            <h2>Bugatti</h2>
+            <p>Type ⚙️: Auto / Year 📅: 2021 / Price 💵: 60/day</p>
+            <button>Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="cardWrap">
         <div class="wraper" data-type="manual">
           <div class="card-front">
             <img src="images/Cards/Mercedes EQS SUV.png" alt="Avatar" />
@@ -132,6 +121,18 @@
           <div class="card-back">
             <h2>Mercedes EQS SUV</h2>
             <p>Type ⚙️: Manual / Year 📅: 2016 / Price 💵: 25/day</p>
+            <button>Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="cardWrap">
+        <div class="wraper" data-type="auto">
+          <div class="card-front">
+            <img src="images/Cards/Mercedes-AMG GT 2024.png" alt="Avatar" />
+          </div>
+          <div class="card-back">
+            <h2>Mercedes AMG GT</h2>
+            <p>Type ⚙️: Auto / Year 📅: 2020 / Price 💵: 40/day</p>
             <button>Order</button>
           </div>
         </div>
@@ -150,6 +151,30 @@
       </div>
     </div>
     <!-- Reviews Section -->
-    <div class="Reviews"></div>
+    <div class="reviews" id="reviews">
+      <div class="card">
+        <img src="images/profile.jpg" alt="profile" />
+        <h2>Doda</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum, sunt?
+        </p>
+      </div>
+      <div class="card">
+        <img src="images/profile.jpg" alt="profile" />
+        <h2>Sufi</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, quam?
+        </p>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+      <div><h2>&copy;Copyright DODA & SUFI</h2></div>
+      <div class="social">
+        <a href="instagram">Instagram</a>
+        <a href="instagram">Snapqat</a>
+        <a href="instagram">Facebook</a>
+      </div>
+    </div>
   </body>
 </html>
