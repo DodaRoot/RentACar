@@ -1,9 +1,7 @@
-// ScrollBar
 // Connecting with the dom
 let scroll = document.querySelector('.scrollBar')
 // Finding the scroll height
 let scrollHeight = document.body.scrollHeight - window.innerHeight
-
 
 // Navbar Hover Effect
 // Navbar links
@@ -34,6 +32,7 @@ if ( document.URL.includes("login.html") ) {
     navLoad()
 }
 
+// Navbar on load behavior
 function navLoad() {
     let domWidth = document.body.offsetWidth
     let pos = actLink.getBoundingClientRect()
@@ -41,6 +40,7 @@ function navLoad() {
     overlay.style.width = (pos.width / domWidth) * 100 + '%'
 }
 
+// Adding on click listeners to navbar links
 let click = false;
 link.forEach((x) => {
     x.addEventListener('mouseover' , () => {
@@ -68,6 +68,7 @@ let sliderIndex = 0
 let imgDiv = document.querySelector('.header .img')
 let img = document.querySelector('.header img')
 let text = document.querySelector('.header .text')
+// Previous slide button
 function slideNext() {
     // Removing the images with animations
     text.style.animation = '1s textOut ease-in-out';
@@ -86,6 +87,7 @@ function slideNext() {
         img.src = sliderCont[sliderIndex][1]
     } , 900)
 }
+// Next slide button
 function slidePre() {
     // Removing the images with animations
     text.style.animation = '1s textOut ease-in-out';
@@ -109,6 +111,7 @@ function slidePre() {
 let cars = document.querySelectorAll('.cardWrap')
 let wrap = document.querySelectorAll('.wraper')
 let sortButtons = document.querySelectorAll('.sortButtons button')
+// Auto sorting button
 function auto() {
     sortButtons[0].style.color = 'black'
     sortButtons[1].style.color = 'rgb(148, 148, 148)'
@@ -125,6 +128,7 @@ function auto() {
         i++
     })
 }
+// Manual sorting button
 function manual() {
     sortButtons[0].style.color = 'rgb(148, 148, 148)'
     sortButtons[1].style.color = 'rgb(148, 148, 148)'
@@ -141,6 +145,7 @@ function manual() {
         i++
     })
 }
+// All sorting button
 function allCars() {
     sortButtons[0].style.color = 'rgb(148, 148, 148)'
     sortButtons[1].style.color = 'black'
@@ -155,6 +160,7 @@ window.onscroll = function() {
     // Changing scroll bar size
     let percentage = (window.pageYOffset / scrollHeight) * 100;
     scroll.style.height = `${percentage}%`
+    // Changing navbar links
     if ( document.URL.includes("index.html") ) {
         // Finding the locations in the page
         // Home section location
@@ -163,20 +169,22 @@ window.onscroll = function() {
         // Cars Section location
         let cars = document.querySelector('#cars')
         let carsLoc = cars.getBoundingClientRect().height / scrollHeight * 100 + 5
-        // Changing navbar link
+        // Changing navbar link to home
         if (percentage <= homeLoc) {
             link[0].setAttribute('class' , 'active')
             link[2].removeAttribute('class' , 'active')
             actLink = document.querySelector('.active')
             navLoad()
         }
+        // Changing navbar link to cars
         else if (percentage >= homeLoc && percentage <= carsLoc) {
             link[0].removeAttribute('class' , 'active')
             link[2].setAttribute('class' , 'active')
             actLink = document.querySelector('.active')
             navLoad()
         }
-         else if (percentage >= carsLoc + 20) {
+        // Changing navbar link to reviews
+        else if (percentage >= carsLoc + 20) {
             link[0].removeAttribute('class' , 'active')
             link[2].removeAttribute('class' , 'active')
             link[3].setAttribute('class' , 'active')
@@ -184,5 +192,4 @@ window.onscroll = function() {
             navLoad()
         }
     }
-
 }
