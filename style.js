@@ -10,13 +10,37 @@ let scrollHeight = document.body.scrollHeight - window.innerHeight
 let link = document.querySelectorAll('.navBar p')
 let actLink = document.querySelector('.active')
 let overlay = document.querySelector('.navBar .overlay')
+
+// Checking which page we are on
+if ( document.URL.includes("index.html") ) {
+    link[0].setAttribute('class' , 'active')
+    link[1].removeAttribute('class' , 'active')
+    link[4].removeAttribute('class' , 'active')
+    actLink = document.querySelector('.active')
+    navLoad()
+}
+if ( document.URL.includes("about.html") ) {
+    link[0].removeAttribute('class' , 'active')
+    link[1].setAttribute('class' , 'active')
+    link[4].removeAttribute('class' , 'active')
+    actLink = document.querySelector('.active')
+    navLoad()
+}
+if ( document.URL.includes("login.html") ) {
+    link[0].removeAttribute('class' , 'active')
+    link[1].removeAttribute('class' , 'active')
+    link[4].setAttribute('class' , 'active')
+    actLink = document.querySelector('.active')
+    navLoad()
+}
+
 function navLoad() {
     let domWidth = document.body.offsetWidth
     let pos = actLink.getBoundingClientRect()
     overlay.style.left = (pos.x / domWidth) * 101 + '%'
-    overlay.style.width = pos.width + 'px'
+    overlay.style.width = (pos.width / domWidth) * 100 + '%'
 }
-navLoad()
+
 let click = false;
 link.forEach((x) => {
     x.addEventListener('mouseover' , () => {
@@ -131,31 +155,34 @@ window.onscroll = function() {
     // Changing scroll bar size
     let percentage = (window.pageYOffset / scrollHeight) * 100;
     scroll.style.height = `${percentage}%`
-    // Finding the locations in the page
-    // Home section location
-    let home = document.querySelector('#home')
-    let homeLoc = home.getBoundingClientRect().height / scrollHeight * 100 + 5
-    // Cars Section location
-    let cars = document.querySelector('#cars')
-    let carsLoc = cars.getBoundingClientRect().height / scrollHeight * 100 + 5
-    // Changing navbar link
-    if (percentage <= homeLoc) {
-        link[0].setAttribute('class' , 'active')
-        link[2].removeAttribute('class' , 'active')
-        actLink = document.querySelector('.active')
-        navLoad()
+    if ( document.URL.includes("index.html") ) {
+        // Finding the locations in the page
+        // Home section location
+        let home = document.querySelector('#home')
+        let homeLoc = home.getBoundingClientRect().height / scrollHeight * 100 + 5
+        // Cars Section location
+        let cars = document.querySelector('#cars')
+        let carsLoc = cars.getBoundingClientRect().height / scrollHeight * 100 + 5
+        // Changing navbar link
+        if (percentage <= homeLoc) {
+            link[0].setAttribute('class' , 'active')
+            link[2].removeAttribute('class' , 'active')
+            actLink = document.querySelector('.active')
+            navLoad()
+        }
+        else if (percentage >= homeLoc && percentage <= carsLoc) {
+            link[0].removeAttribute('class' , 'active')
+            link[2].setAttribute('class' , 'active')
+            actLink = document.querySelector('.active')
+            navLoad()
+        }
+         else if (percentage >= carsLoc + 20) {
+            link[0].removeAttribute('class' , 'active')
+            link[2].removeAttribute('class' , 'active')
+            link[3].setAttribute('class' , 'active')
+            actLink = document.querySelector('.active')
+            navLoad()
+        }
     }
-    else if (percentage >= homeLoc && percentage <= carsLoc) {
-        link[0].removeAttribute('class' , 'active')
-        link[2].setAttribute('class' , 'active')
-        actLink = document.querySelector('.active')
-        navLoad()
-    }
-    else if (percentage >= carsLoc + 20) {
-        link[0].removeAttribute('class' , 'active')
-        link[2].removeAttribute('class' , 'active')
-        link[3].setAttribute('class' , 'active')
-        actLink = document.querySelector('.active')
-        navLoad()
-    }
+
 }

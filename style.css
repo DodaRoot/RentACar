@@ -284,14 +284,16 @@ body {
 }
 .footer .social {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .footer .social a {
     margin: 5%;
 }
-
+.footer .social a img {
+    width: 50px;
+    height: 50px;
+}
 /* About Page */
 .pageContent {
     margin-top: 10%;
@@ -335,13 +337,42 @@ body {
     height: 50vh;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 5%;
+    margin-bottom: 5%;
 }
-.employCard {
+.employContent div {
     width: 300px;
     height: 300px;
+}
+.employCard {
+    width: inherit;
+    height: inherit;
     border: 1px solid black;
     overflow: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.employCard img {
+    width: inherit;
+    height: inherit;
+}
+.employCard .cardBody {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    transition: .5s all ease-in-out;
+    background-color: rgb(255, 255, 255 , .5);
+    color: rgb(0, 0, 0);
+}
+.employCard:hover .cardBody{
+    right: 0;
 }
