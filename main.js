@@ -1,23 +1,25 @@
 // Connecting the dom
-let loginDisplay = document.querySelectorAll('.navBar p')[4]
+let loginDisplay = document.querySelectorAll('.navBar a')[4]
 let loginForm = document.querySelectorAll('.login')[0]
 let signupForm = document.querySelectorAll('.login')[1]
 let infoForm = document.querySelectorAll('.login')[2]
 
-// Hiding login displays
-signupForm.style.display = 'none'
-infoForm.style.display = 'none'
+// Setting local storage short cut
+let localObj = null;
+// Checking if the user is logged in
+let userIndex = localStorage.getItem('userIndex');
+
+if ( document.URL.includes("login.html") ) {
+    // Hiding login displays
+    signupForm.style.display = 'none'
+    infoForm.style.display = 'none'
+}
 
 // Main Object
 let accountObj = {
     0 : ['doda' , 'doda@gmail.com' , 'pass' , '044 111 323'],
     1 : ['sufi' , 'sufi@gmail.com' , 'pass' , '045 676 313'],
 }
-
-// Setting local storage short cut
-let localObj = null;
-// Checking if the user is logged in
-let userIndex = localStorage.getItem('userIndex');
 
 // Checking if main obj is in local storage
 if (localStorage.getItem('obj') == null) {
@@ -26,6 +28,10 @@ if (localStorage.getItem('obj') == null) {
 }
 else {
     localObj = JSON.parse(localStorage.getItem('obj'))
+}
+
+if (userIndex != null) {
+    loginDisplay.innerText = localObj[userIndex][0]
 }
 
 // Logic Functions
@@ -50,12 +56,12 @@ function login () {
 
 // Successful login function
 function successLogin (index) {
-    loginDisplay.innerText = localObj[index][0]
     userIndex = localStorage.setItem('userIndex' , index);
     location.reload()
 }
+
 // Switching from login to info if user is logged in
-if (userIndex != null) {
+if (userIndex != null && document.URL.includes("login.html")) {
     // Information in the user info
     loginForm.style.display = 'none'
     signupForm.style.display = 'none'
@@ -109,4 +115,19 @@ function signout () {
     location.reload()
 }
 
-// localStorage.clear()
+
+// Home data
+let cardsTitle = document.querySelectorAll('.card-back h2')
+let cardsInfo = document.querySelectorAll('.card-back p')
+let cardsButton = document.querySelectorAll('.card-back button')
+let cardsImage = document.querySelectorAll('.card-front img')
+
+for (let [index , value] of cardsButton.entries()) {
+    value.addEventListener('click' , () => {
+        let array = cardsInfo[index].innerText.split('/')
+        let title = cardsTitle[index].innerText
+        let type = array[0]
+        let year = array[1]
+        let price = array[2]
+    })
+}
