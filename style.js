@@ -36,7 +36,7 @@ if ( document.URL.includes("login.html") ) {
 function navLoad() {
     let domWidth = document.body.offsetWidth
     let pos = actLink.getBoundingClientRect()
-    overlay.style.left = (pos.x / domWidth) * 101 + '%'
+    overlay.style.left = (pos.x / domWidth) * 100 + '%'
     overlay.style.width = (pos.width / domWidth) * 100 + '%'
 }
 
@@ -46,13 +46,13 @@ link.forEach((x) => {
     x.addEventListener('mouseover' , () => {
         let domWidth = document.body.offsetWidth
         let pos = x.getBoundingClientRect()
-        overlay.style.left = (pos.x / domWidth) * 101 + '%'
+        overlay.style.left = (pos.x / domWidth) * 100 + '%'
         overlay.style.width = pos.width + 'px'
     })
     x.addEventListener('mouseleave' , () => {
         let domWidth = document.body.offsetWidth
         let actPos = actLink.getBoundingClientRect()
-        overlay.style.left = (actPos.x / domWidth) * 101 + '%'
+        overlay.style.left = (actPos.x / domWidth) * 100 + '%'
         overlay.style.width = actPos.width + 'px'
     })
 })
@@ -64,10 +64,12 @@ let sliderCont = {
     1 : ['Coupe - Have the best adventure you can !' , 'images/SliderImg/Slider2.png'],
     2 : ['Sport Car - Drive as fast as you can with this car' , 'images/SliderImg/Slider3.png'],
 }
+
 let sliderIndex = 0
 let imgDiv = document.querySelector('.header .img')
 let img = document.querySelector('.header img')
 let text = document.querySelector('.header .text')
+
 // Previous slide button
 function slideNext() {
     // Removing the images with animations
@@ -87,6 +89,7 @@ function slideNext() {
         img.src = sliderCont[sliderIndex][1]
     } , 900)
 }
+
 // Next slide button
 function slidePre() {
     // Removing the images with animations
@@ -128,6 +131,7 @@ function auto() {
         i++
     })
 }
+
 // Manual sorting button
 function manual() {
     sortButtons[0].style.color = 'rgb(148, 148, 148)'
@@ -145,6 +149,7 @@ function manual() {
         i++
     })
 }
+
 // All sorting button
 function allCars() {
     sortButtons[0].style.color = 'rgb(148, 148, 148)'
