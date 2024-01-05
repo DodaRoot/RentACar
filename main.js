@@ -3,6 +3,8 @@ let loginDisplay = document.querySelectorAll('.navBar a')[4]
 let loginForm = document.querySelectorAll('.login')[0]
 let signupForm = document.querySelectorAll('.login')[1]
 let infoForm = document.querySelectorAll('.login')[2]
+let commentsForm = document.querySelector('#comments')
+
 
 // Setting local storage short cut
 let localObj = null;
@@ -13,6 +15,10 @@ if ( document.URL.includes("login.html") ) {
     // Hiding login displays
     signupForm.style.display = 'none'
     infoForm.style.display = 'none'
+}
+if ( document.URL.includes("index.html") ) {
+    // Hiding the comment section
+    commentsForm.style.display = 'none'
 }
 
 // Main Object
@@ -74,6 +80,30 @@ if (userIndex != null && document.URL.includes("login.html")) {
     infoText[3].innerText = 'Your password is / ' + userArray[3]
 }
 
+// Showing the comments section
+if (userIndex != null && document.URL.includes("index.html")) {
+    commentsForm.style.display = 'flex'
+    function subComment() {
+        event.preventDefault()
+        let text = document.querySelector('#comment').value
+        let container = document.querySelector('.reviews')
+        let div = document.createElement('div')
+        let img = document.createElement('img')
+        let h2 = document.createElement('h2')
+        let p = document.createElement('p')
+        div.setAttribute('class' , 'card')
+        container.append(div)
+        img.src = 'images/profile.jpg'
+        div.append(img)
+        h2.innerText = localObj[userIndex][0]
+        div.append(h2)
+        p.innerText = text
+        div.append(p)
+    }
+}
+
+
+
 // Signing up function
 function signup () {
     event.preventDefault()
@@ -124,10 +154,53 @@ let cardsImage = document.querySelectorAll('.card-front img')
 
 for (let [index , value] of cardsButton.entries()) {
     value.addEventListener('click' , () => {
-        let array = cardsInfo[index].innerText.split('/')
-        let title = cardsTitle[index].innerText
-        let type = array[0]
-        let year = array[1]
-        let price = array[2]
+        if (userIndex != null) {
+            let array = cardsInfo[index].innerText.split('/')
+            localStorage.setItem('title' , cardsTitle[index].innerText)
+            localStorage.setItem('type' , array[0])
+            localStorage.setItem('year' , array[1])
+            localStorage.setItem('price' , array[2])
+            localStorage.setItem('image' , cardsImage[index].src)
+            location.replace('order.html')
+        }
+        else {
+            alert('you need to login')
+        }
     })
 }
+
+if (document.URL.includes("order.html")) {
+    let title = localStorage.getItem('title')
+    let type = localStorage.getItem('type')
+    let year = localStorage.getItem('year')
+    let price = localStorage.getItem('price')
+    let image = localStorage.getItem('image')
+    let orderImage = document.querySelector('.orderImage img')
+    let orderInfo = document.querySelectorAll('.orderInfo p')
+    orderImage.src = image
+    orderInfo[0].innerText = title
+    orderInfo[1].innerText = type
+    orderInfo[2].innerText = year
+    orderInfo[3].innerText = price
+    // Get the modal
+    let modal = document.getElementById("myModal");
+    // Get the button that opens the modal
+    let btn = document.getElementById("myBtn");
+    // Get the <span> element that closes the modal
+    let span = document.getElementsByClassName("close")[0]
+    // Modali ---------
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
