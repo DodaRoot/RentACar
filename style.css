@@ -427,9 +427,16 @@ body {
 }
 .login button {
     margin: 5%;
-    height: 30px;
+    height: 40px;
     width: 100%;
     font-size: 22px;
+    border: none;
+    background-color: #0029ce;
+    color: white;
+    cursor: pointer;
+}
+.login button:hover {
+    border: 2px solid white;
 }
 .login .info {
     display: flex;
