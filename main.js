@@ -68,7 +68,7 @@ function signup () {
     // Making the temp obj the primary obj
     localStorage.setItem('obj' , JSON.stringify(old_data))
     // Reloading the page
-    location.reload()
+    location.reload
 }
 
 // Login Function
@@ -78,7 +78,7 @@ function login () {
     let loginPassword = document.querySelector('#loginPassword').value
     for (let user in localObj) {
         if (loginUsernameOrEmail == localObj[user][0] && loginPassword == localObj[user][2]) {
-            popup('Success' , `Welcome ${loginUsernameOrEmail}` , true , user)
+            popup('Success' , `Welcome ${loginUsernameOrEmail}` , successLogin , user)
             break;
         }
         else if (loginUsernameOrEmail == localObj[user][0] || loginUsernameOrEmail == localObj[user][1]) {
@@ -376,7 +376,7 @@ if (document.URL.includes("index.html") && localCommentObj != null) {
 }
 
 // Popup
-function popup (title , content , func , user) {
+function popup (title , content , func , param) {
     let contain = document.createElement('div')
     let div = document.createElement('div')
     let head = document.createElement('h2')
@@ -394,8 +394,6 @@ function popup (title , content , func , user) {
     div.append(button)
     button.addEventListener('click' , () => {
         div.style.display = 'none'
-        if (func == true) {
-            successLogin(user)
-        }
+        func(param)
     })
 }
