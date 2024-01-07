@@ -78,16 +78,17 @@ function login () {
     let loginPassword = document.querySelector('#loginPassword').value
     for (let user in localObj) {
         if (loginUsernameOrEmail == localObj[user][0] && loginPassword == localObj[user][2]) {
-            console.log('001')
-            successLogin(user)
+            popup('Success' , `Welcome ${loginUsernameOrEmail}` , true , user)
             break;
         }
         else if (loginUsernameOrEmail == localObj[user][0] || loginUsernameOrEmail == localObj[user][1]) {
-            console.log('User exists but the password is wrong')
+            popup('Error' , 'User exists but the password is wrong')
             break;
         }
         else {
-            console.log('Username does not exist')
+            if (Object.keys(localObj).length - 1 == user) {
+                popup('Error' , 'User does not exist')
+            }
         }
     }
 }
@@ -106,10 +107,10 @@ if (userIndex != null && document.URL.includes("login.html")) {
     infoForm.style.display = 'flex'
     let userArray = localObj[userIndex]
     let infoText = document.querySelectorAll('.info p')
-    infoText[0].innerText = 'Your username is / ' + userArray[0]
-    infoText[1].innerText = 'Your email is / ' + userArray[1]
-    infoText[2].innerText = 'Your number is / ' + userArray[2]
-    infoText[3].innerText = 'Your password is / ' + userArray[3]
+    infoText[0].innerText = 'Username $- ' + userArray[0]
+    infoText[1].innerText = 'Email $- ' + userArray[1]
+    infoText[2].innerText = 'Number $- ' + userArray[3]
+    infoText[3].innerText = 'Password $- ' + userArray[2]
 }
 
 // Hiding the login form from display
@@ -156,7 +157,7 @@ for (let [index , value] of cardsButton.entries()) {
             location.replace('order.html')
         }
         else {
-            alert('you need to login')
+            popup('Error' , 'You need to sign in to continue')
         }
     })
 }
@@ -194,28 +195,6 @@ if (document.URL.includes("order.html")) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
-}
-
-// Showing the comments section
-if (userIndex != null && document.URL.includes("index.html")) {
-    commentsForm.style.display = 'flex'
-    function subComment() {
-        event.preventDefault()
-        let text = document.querySelector('#comment').value
-        let container = document.querySelector('.reviews')
-        let div = document.createElement('div')
-        let img = document.createElement('img')
-        let h2 = document.createElement('h2')
-        let p = document.createElement('p')
-        div.setAttribute('class' , 'card')
-        container.append(div)
-        img.src = 'images/profile.jpg'
-        div.append(img)
-        h2.innerText = localObj[userIndex][0]
-        div.append(h2)
-        p.innerText = text
-        div.append(p)
     }
 }
 
@@ -342,4 +321,81 @@ if (document.URL.includes("orderData.html")) {
 // Admin button adding
 if (userIndex == 0 && document.URL.includes("login.html")) {
     adminBtn.style.display = 'flex'
+}
+
+// Comment object
+
+let commentObj = {}
+let localCommentObj = null
+// Setting the comment section
+if (localStorage.getItem('commentObj') == null) {
+    localStorage.setItem('commentObj' , JSON.stringify(commentObj))
+    localCommentObj = JSON.parse(localStorage.getItem('commentObj'))
+
+}
+else {
+    localCommentObj = JSON.parse(localStorage.getItem('commentObj'))
+}
+
+// Showing the comments section
+if (userIndex != null && document.URL.includes("index.html")) {
+    commentsForm.style.display = 'flex'
+    function subComment() {
+        event.preventDefault()
+        let text = document.querySelector('#comment').value
+        // Setting up the new data
+        let new_data = [text , localObj[userIndex][0]]
+        // Getting the value from obj and setting to temp value
+        let old_data = JSON.parse(localStorage.getItem('commentObj'))
+        // Getting the index of the temp obj
+        let index = (Object.keys(old_data).length)
+        // Setting the new value to temp obj
+        old_data[index] = new_data
+        // Making the temp obj the primary obj
+        localStorage.setItem('commentObj' , JSON.stringify(old_data))
+        // Reloading the page
+        location.reload() 
+    }
+}
+if (document.URL.includes("index.html") && localCommentObj != null) {
+    for (let comment in localCommentObj) {
+        let container = document.querySelector('.reviews')
+        let div = document.createElement('div')
+        let img = document.createElement('img')
+        let h2 = document.createElement('h2')
+        let p = document.createElement('p')
+        div.setAttribute('class' , 'card')
+        container.append(div)
+        img.src = 'images/profile.jpg'
+        div.append(img)
+        h2.innerText = localCommentObj[comment][1]
+        div.append(h2)
+        p.innerText = localCommentObj[comment][0]
+        div.append(p)
+    }
+}
+
+// Popup
+function popup (title , content , func , user) {
+    let contain = document.createElement('div')
+    let div = document.createElement('div')
+    let head = document.createElement('h2')
+    let text = document.createElement('p')
+    let button = document.createElement('button')
+    contain.setAttribute('class' , 'contain')
+    div.setAttribute('class' , 'popup')
+    document.body.append(contain)
+    contain.append(div)
+    head.innerText = title
+    text.innerText = content
+    button.innerText = 'Close'
+    div.append(head)
+    div.append(text)
+    div.append(button)
+    button.addEventListener('click' , () => {
+        div.style.display = 'none'
+        if (func == true) {
+            successLogin(user)
+        }
+    })
 }

@@ -61,7 +61,7 @@ link.forEach((x) => {
 // Slider content
 let sliderCont = {
     0 : ['Sedan - The perfect car for a family trip' , 'images/SliderImg/Slider1.png'],
-    1 : ['Coupe - Have the best adventure you can !' , 'images/SliderImg/Slider2.png'],
+    1 : ['Coupe - Have the best adventure you can have!' , 'images/SliderImg/Slider2.png'],
     2 : ['Sport Car - Drive as fast as you can with this car' , 'images/SliderImg/Slider3.png'],
 }
 
