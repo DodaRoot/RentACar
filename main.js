@@ -9,6 +9,10 @@ let cardsTitle = document.querySelectorAll('.card-back h2')
 let cardsInfo = document.querySelectorAll('.card-back p')
 let cardsButton = document.querySelectorAll('.card-back button')
 let cardsImage = document.querySelectorAll('.card-front img')
+// Modal at order page
+let modal = document.getElementById("myModal");
+let btn = document.getElementById("myBtn");
+let span = document.getElementsByClassName("close")[0]
 // ADMIN BUTTON
 let adminBtn = document.querySelector('.adminBtn')
 // Setting local storage short cut
@@ -53,10 +57,26 @@ if (userIndex != null) {
 // Signing up function
 function signup () {
     event.preventDefault()
+    const verify = Math.floor(Math.random() * 10000) + 10
     let signupUsername = document.querySelector('#signupUsername').value
     let signupEmail = document.querySelector('#signupEmail').value
     let signupPhone = document.querySelector('#signupPhone').value
     let signupPassword = document.querySelector('#signupPassword').value
+    emailjs.init('OtXdgSEl74xLY4zZd')
+    emailjs.send("service_vjjgctq","template_n69lm4q",{
+        name: signupUsername,
+        message: `Hello and thank you for joining the RENT A CAR family \n
+        Here is your verification code ${verify}`,
+        emails: signupEmail,
+    });
+    let userVerify = prompt('Verification code')
+    if (userVerify == verify) {
+        success()
+    }
+    else {
+        popup('Error' , 'Verification code was wrong' , reload)
+    }
+    function success () {
     // Setting up the new data
     let new_data = [signupUsername , signupEmail , signupPassword , signupPhone]
     // Getting the value from obj and setting to temp value
@@ -68,8 +88,11 @@ function signup () {
     // Making the temp obj the primary obj
     localStorage.setItem('obj' , JSON.stringify(old_data))
     // Reloading the page
-    location.reload
+    popup('Success' , 'You have successfully signed up' , reload)
+    }
 }
+
+
 
 // Login Function
 function login () {
@@ -176,12 +199,6 @@ if (document.URL.includes("order.html")) {
     orderInfo[1].innerText = type
     orderInfo[2].innerText = year
     orderInfo[3].innerText = price
-    // Get the modal
-    let modal = document.getElementById("myModal");
-    // Get the button that opens the modal
-    let btn = document.getElementById("myBtn");
-    // Get the <span> element that closes the modal
-    let span = document.getElementsByClassName("close")[0]
     // Modali ---------
     btn.onclick = function() {
         modal.style.display = "block";
@@ -211,6 +228,7 @@ else {
 }
 
 function order() {
+    event.preventDefault()
     let title = localStorage.getItem('title')
     let type = localStorage.getItem('type')
     let year = localStorage.getItem('year')
@@ -220,7 +238,6 @@ function order() {
     let dropDate = document.querySelector('#DropDate').value
     let pickCity = document.querySelector('#PickCity').value
     let dropCity = document.querySelector('#DropCity').value
-    console.log(pickDate + dropDate + pickCity + dropCity)
     // Setting up the new data
     let new_data = [title , type , year , price , image , pickDate , dropDate , pickCity , dropCity , userIndex]
     // Getting the value from obj and setting to temp value
@@ -231,8 +248,10 @@ function order() {
     old_data[index] = new_data
     // Making the temp obj the primary obj
     localStorage.setItem('objOrder' , JSON.stringify(old_data))
-    // Reloading the page
-    location.replace('index.html')    
+    // Hiding the modal
+    modal.style.display = "none";
+    // Showing the popup
+    popup('Success' , `Your order for a ${title} was successfully sent...` , replace , 'index.html')  
 }
 
 function orderData () {
@@ -396,4 +415,12 @@ function popup (title , content , func , param) {
         div.style.display = 'none'
         func(param)
     })
+}
+
+// Calling functions to reload and replace
+function reload () {
+    location.reload()
+}
+function replace (param) {
+    location.replace(param)
 }

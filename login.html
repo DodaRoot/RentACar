@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css" />
     <script src="style.js" async></script>
     <script src="main.js" async></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+      async
+    ></script>
   </head>
   <body>
     <!-- Creating a interesting scroll bar -->
@@ -55,7 +60,12 @@
           placeholder="Username"
         />
         <label for="signupEmail">Email</label>
-        <input minlength="5" id="signupEmail" type="text" placeholder="Email" />
+        <input
+          minlength="3"
+          id="signupEmail"
+          type="email"
+          placeholder="Email"
+        />
         <label for="signupPhone">Phone Number</label>
         <input
           minlength="3"
