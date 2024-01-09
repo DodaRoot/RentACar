@@ -343,7 +343,6 @@ if (userIndex == 0 && document.URL.includes("login.html")) {
 }
 
 // Comment object
-
 let commentObj = {}
 let localCommentObj = null
 // Setting the comment section
