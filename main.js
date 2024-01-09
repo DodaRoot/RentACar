@@ -17,9 +17,20 @@ let span = document.getElementsByClassName("close")[0]
 let adminBtn = document.querySelector('.adminBtn')
 // Setting local storage short cut
 let localObj = null;
-
 // Checking if the user is logged in
 let userIndex = localStorage.getItem('userIndex');
+// Getting the date for the test drive
+let date = new Date()
+let year = date.getFullYear()
+let month = (date.getMonth() + 1).toString()
+let day = (date.getDate()).toString()
+if (day.length == 1) {
+    day = '0' + day
+}
+if (month.length == 1) {
+    month = '0' + month
+}
+let testDate = `${year}-${month}-${day}`
 
 // Hiding login displays
 if ( document.URL.includes("login.html") ) {
@@ -253,6 +264,33 @@ function order() {
     // Showing the popup
     popup('Success' , `Your order for a ${title} was successfully sent...` , replace , 'index.html')  
 }
+function testDrive() {
+    event.preventDefault()
+    let title = localStorage.getItem('title')
+    let type = localStorage.getItem('type')
+    let year = localStorage.getItem('year')
+    let price = localStorage.getItem('price')
+    let image = localStorage.getItem('image')
+    let pickDate = testDate
+    let dropDate = 'Same Date'
+    let pickCity = `Test Drive(${document.querySelector('#PickCity').value})`
+    let dropCity = `Same Location`
+    // Setting up the new data
+    let new_data = [title , type , year , price , image , pickDate , dropDate , pickCity , dropCity , userIndex]
+    // Getting the value from obj and setting to temp value
+    let old_data = JSON.parse(localStorage.getItem('objOrder'))
+    // Getting the index of the temp obj
+    let index = (Object.keys(old_data).length)
+    // Setting the new value to temp obj
+    old_data[index] = new_data
+    // Making the temp obj the primary obj
+    localStorage.setItem('objOrder' , JSON.stringify(old_data))
+    // Hiding the modal
+    modal.style.display = "none";
+    // Showing the popup
+    popup('Success' , `Your test drive for a ${title} was successfully scheduled for today...` , replace , 'index.html')  
+}
+
 
 function orderData () {
     location.replace('orderData.html')
