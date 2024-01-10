@@ -416,15 +416,18 @@ body {
     align-items: center;
     border: 1px solid black;
     padding: 5% 9%;
-    border-radius: 15%;
-    background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    border-radius: 30px;
+    background-color: #373737;
 }
 .login input {
     margin: 5%;
     height: 20px;
-    width: 200px;
+    width: 220px;
     font-size: 20px;
+    border: none;
+    border-bottom: 2px solid red;
+    color: inherit;
+    background-color: inherit;
 }
 .login button {
     margin: 5%;
@@ -446,15 +449,17 @@ body {
     align-items: center;
     border: 1px solid black;
     padding: 5% 9%;
-    border-radius: 15%;
-    background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    border-radius: 30px;
+    background-color: #373737;
 }
-.login p {
-    margin: 5%;
-    height: 20px;
-    width: 400px;
-    font-size: 25px;
+.login table td {
+    cursor: pointer;
+}
+.login table tr:hover {
+    background-color: inherit;
+}
+.login table td:hover {
+    background-color: red;
 }
 
 /* Order Page */

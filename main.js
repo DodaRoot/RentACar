@@ -140,11 +140,11 @@ if (userIndex != null && document.URL.includes("login.html")) {
     signupForm.style.display = 'none'
     infoForm.style.display = 'flex'
     let userArray = localObj[userIndex]
-    let infoText = document.querySelectorAll('.info p')
-    infoText[0].innerText = 'Username $- ' + userArray[0]
-    infoText[1].innerText = 'Email $- ' + userArray[1]
-    infoText[2].innerText = 'Number $- ' + userArray[3]
-    infoText[3].innerText = 'Password $- ' + userArray[2]
+    let infoText = document.querySelectorAll('.info td')
+    infoText[1].innerText = userArray[0]
+    infoText[3].innerText = userArray[1]
+    infoText[5].innerText = userArray[3]
+    infoText[7].innerText = userArray[2]
 }
 
 // Hiding the login form from display
