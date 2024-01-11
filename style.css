@@ -297,25 +297,48 @@ body {
 }
 /* Footer */
 .footer {
-    height: 150px;
+    height: fit-content;
     width: 100%;
     background-color: rgb(37, 37, 37);
     color: white;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    padding: 2px 0px;
+    font-size: 22px;
 }
-.footer .social {
+.footer .content {
+    width: 100%;
     display: flex;
+    justify-content: space-around;
+    align-items: start;
+}
+.footer .content h3 {
+    border-bottom: 2px solid blue;
+}
+.footer .content .card , .cardImg {
+    width: 300px;
+}
+.footer .content .card a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    width: fit-content;
+    color: rgb(187, 187, 187);
+    margin: 15px 0px;
 }
-.footer .social a {
-    margin: 5%;
-}
-.footer .social a img {
+.footer .content img {
     width: 50px;
-    height: 50px;
+}
+.footer .content .card a:hover {
+    color: white;
+    border-bottom: 2px solid blue;
+}
+.footer .content .cardImg a:hover {
+    border-bottom: 2px solid blue;
 }
 /* About Page */
 .pageContent {
