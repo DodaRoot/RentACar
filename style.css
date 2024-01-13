@@ -739,6 +739,18 @@ tr:hover {
 .popup button:hover {
     background-color: red;
 }
+.orderBtn{
+    background: none;
+	color: inherit;
+	border: none;
+    border-radius: 10px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    background-color: rgb(72, 72, 72);
+    color: white;
+    height: 50px;
+}
 @keyframes fadeDown {
     0% {
         margin-top: -200px;
