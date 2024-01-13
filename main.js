@@ -46,7 +46,7 @@ if ( document.URL.includes("index.html") ) {
 
 // Main Object
 let accountObj = {
-    0 : ['admin' , 'admin' , 'admin' , 'Private'],
+    0 : ['admin' , 'admin@gmail.com' , 'admin' , 'Private'],
     1 : ['doda' , 'doda@gmail.com' , 'pass' , '044 111 323'],
     2 : ['sufi' , 'sufi@gmail.com' , 'pass' , '045 676 313'],
 }
@@ -68,7 +68,7 @@ if (userIndex != null) {
 // Signing up function
 function signup () {
     event.preventDefault()
-    const verify = Math.floor(Math.random() * 10000) + 10
+    const verify = Math.floor(Math.random() * 8000) + 1000
     let signupUsername = document.querySelector('#signupUsername').value
     let signupEmail = document.querySelector('#signupEmail').value
     let signupPhone = document.querySelector('#signupPhone').value
@@ -334,10 +334,13 @@ if (document.URL.includes("orderData.html")) {
         let headers = document.querySelectorAll('#orderData table tr')
         let person = document.createElement('th')
         let number = document.createElement('th')
+        let send = document.createElement('th')
         person.innerText = 'Person'
         number.innerText = 'Number'
+        send.innerText = 'Send a order'
         headers[0].append(person)
         headers[0].append(number)
+        headers[0].append(send)
         for(let element in localOrderObj) {
             let row = document.createElement('tr')
             table.append(row)
@@ -371,6 +374,17 @@ if (document.URL.includes("orderData.html")) {
             let number = document.createElement('td')
             number.innerText = localObj[localOrderObj[element][9]][3] 
             row.append(number)
+            let btnContainer = document.createElement('th')
+            let button = document.createElement('button')
+            button.setAttribute('class' , 'orderBtn')
+            button.innerText = 'Send Order'
+            button.addEventListener('click' , () => {
+                adminSend(localOrderObj[element] , localObj[localOrderObj[element][9]][0] , localObj[localOrderObj[element][9]][1])
+                button.style.backgroundColor = 'green'
+                button.innerText = 'Order Sent'
+            })
+            row.append(btnContainer)
+            btnContainer.append(button)
         }
     }
 }
@@ -452,6 +466,17 @@ function popup (title , content , func , param) {
         div.style.display = 'none'
         func(param)
     })
+}
+
+function adminSend(order , name , email) {
+    console.log(order)
+    console.log(`Hello and thank you for ordering Your order for a ${order[0]} was approved you can pick up the car on ${order[5]} in ${order[7]} and return it at ${order[6]} in ${order[8]}`)
+    emailjs.init('OtXdgSEl74xLY4zZd')
+    emailjs.send("service_vjjgctq","template_n69lm4q",{
+        name: name,
+        message: `Hello and thank you for ordering Your order for a ${order[0]} was approved you can pick up the car on ${order[5]} in ${order[7]} and return it at ${order[6]} in ${order[8]}`,
+        emails: email,
+    });
 }
 
 // Calling functions to reload and replace
