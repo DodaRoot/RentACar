@@ -383,8 +383,8 @@ body {
 
 /* Employe Content */
 .employContent {
-    background-color: #f4f4f4;
-    height: 60vh;
+    background-color: #f0f0f0;
+    height: 70vh;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -419,8 +419,8 @@ body {
     justify-content: end;
     align-items: center;
     transition: .5s all ease-in-out;
-    background-color: rgb(255, 255, 255 , .5);
-    color: rgb(0, 0, 0);
+    background-color: rgba(61, 61, 61, 0.951);
+    color: rgb(255, 255, 255);
 }
 .employCard:hover .cardBody{
     right: 0;
@@ -723,6 +723,11 @@ tr:hover {
     padding: 0;
     margin: 0;
 }
+.popup input {
+    margin: 15px;
+    height: 20px;
+    width: 200px;
+}
 .popup button {
     background: none;
 	color: inherit;
@@ -761,3 +766,28 @@ tr:hover {
         opacity: 1;
     }    
 }
+/* About Page List */
+.listContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70vh;
+    font-size: 27px;
+    background-color: #0033ff;
+    color: white;
+}
+.listContainer .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px dashed rgb(255, 255, 255);
+    border-radius: 50px;
+    width: 30%;
+    height: 60%;
+}
+/* Importing list space styling */
+@counter-style thumbs {
+    system: cyclic;
+    symbols: "\1F44D";
+    suffix: " ";
+  }

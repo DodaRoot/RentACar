@@ -65,10 +65,11 @@ if (userIndex != null) {
     loginDisplay.innerText = localObj[userIndex][0]
 }
 
+let verify = null
 // Signing up function
 function signup () {
     event.preventDefault()
-    const verify = Math.floor(Math.random() * 8000) + 1000
+    verify = Math.floor(Math.random() * 8000) + 1000
     let signupUsername = document.querySelector('#signupUsername').value
     let signupEmail = document.querySelector('#signupEmail').value
     let signupPhone = document.querySelector('#signupPhone').value
@@ -80,30 +81,9 @@ function signup () {
         Here is your verification code ${verify}`,
         emails: signupEmail,
     });
-    let userVerify = prompt('Verification code')
-    if (userVerify == verify) {
-        success()
-    }
-    else {
-        popup('Error' , 'Verification code was wrong' , reload)
-    }
-    function success () {
-    // Setting up the new data
-    let new_data = [signupUsername , signupEmail , signupPassword , signupPhone]
-    // Getting the value from obj and setting to temp value
-    let old_data = JSON.parse(localStorage.getItem('obj'))
-    // Getting the index of the temp obj
-    let index = (Object.keys(old_data).length)
-    // Setting the new value to temp obj
-    old_data[index] = new_data
-    // Making the temp obj the primary obj
-    localStorage.setItem('obj' , JSON.stringify(old_data))
-    // Reloading the page
-    popup('Success' , 'You have successfully signed up' , reload)
-    }
+    console.log(verify)
+    popupVerify(signupUsername, signupEmail, signupPhone, signupPassword , verify)
 }
-
-
 
 // Login Function
 function login () {
@@ -465,6 +445,43 @@ function popup (title , content , func , param) {
     button.addEventListener('click' , () => {
         div.style.display = 'none'
         func(param)
+    })
+}
+function popupVerify(signupUsername, signupEmail, signupPhone, signupPassword , verify) {
+    let contain = document.createElement('div')
+    let div = document.createElement('div')
+    let head = document.createElement('h2')
+    let input = document.createElement('input')
+    let button = document.createElement('button')
+    contain.setAttribute('class' , 'contain')
+    div.setAttribute('class' , 'popup')
+    document.body.append(contain)
+    contain.append(div)
+    head.innerText = 'Verification code was sent to email'
+    button.innerText = 'Submit'
+    div.append(head)
+    div.append(input)
+    div.append(button)
+    button.addEventListener('click' , () => {
+        div.style.display = 'none'
+        let userVerify = input.value
+        if (userVerify == verify) {
+            // Setting up the new data
+            let new_data = [signupUsername , signupEmail , signupPassword , signupPhone]
+            // Getting the value from obj and setting to temp value
+            let old_data = JSON.parse(localStorage.getItem('obj'))
+            // Getting the index of the temp obj
+            let index = (Object.keys(old_data).length)
+            // Setting the new value to temp obj
+            old_data[index] = new_data
+            // Making the temp obj the primary obj
+            localStorage.setItem('obj' , JSON.stringify(old_data))
+            // Reloading the page
+            popup('Success' , 'You have successfully signed up' , reload)
+        }
+        else {
+            popup('Error' , 'Verification code was wrong' , reload)
+        }
     })
 }
 
